@@ -93,3 +93,5 @@ https://user-images.githubusercontent.com/77060011/208584889-7d1375f9-a237-4edd-
     
 ## 6. 노션 링크
 [Notion](https://versed-fir-a6f.notion.site/Exit-88c95acb91b146f3a5aeb860dd18aaa6)
+# 2023-1-OPPS1-전과6범-01
+2023년 1학기 공개SW프로젝트01 1조 전과6범입니다. 
