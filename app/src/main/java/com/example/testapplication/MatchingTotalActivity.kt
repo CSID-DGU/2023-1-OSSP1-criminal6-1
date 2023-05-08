@@ -50,6 +50,8 @@ class MatchingTotalActivity : AppCompatActivity() {
             diff = "1"
         else if (diff.toString() == "하")
             diff = "0"
+        else if (diff.toString() == "")
+            diff = "11"
 
         var activity = intent.getStringExtra("activity")
         binding.tvActivity.text = activity
@@ -60,6 +62,8 @@ class MatchingTotalActivity : AppCompatActivity() {
             activity = "1"
         else if (activity.toString() == "하")
             activity = "0"
+        else if (activity.toString() == "")
+            activity = "11"
 
         var fear = intent.getStringExtra("fear")
         binding.tvFear.text = fear
@@ -71,6 +75,8 @@ class MatchingTotalActivity : AppCompatActivity() {
             fear = "1"
         else if (fear.toString() == "하")
             fear = "0"
+        else if (fear.toString() == "")
+            fear = "11"
 
         binding.btnBack.setOnClickListener {
             val intent = Intent(this, MatchingOptionActivity::class.java)
@@ -139,8 +145,8 @@ class MatchingTotalActivity : AppCompatActivity() {
                                 }
                             }
                             count += (recount / 3)
-                            if (Integer.parseInt(array[j][4]) >= Integer.parseInt(useroption[3])
-                                && Integer.parseInt(array[j][4]) <= Integer.parseInt(useroption[4])
+                            if (Integer.parseInt(array[j][4]) >= Integer.parseInt(useroption[3].toString())
+                                && Integer.parseInt(array[j][4]) <= Integer.parseInt(useroption[4].toString())
                             )
                                 count++
                             if (array[j][5] == useroption[5])
