@@ -44,30 +44,33 @@ class Recommend_list : AppCompatActivity() {
                 Log.d("getList", resultArray[2])
 
 
-
-                api.getRoomRecommendation(
-                    preferences.getString("userId", ""),
-                    Integer.parseInt(resultArray[0]),
-                    Integer.parseInt(resultArray[1]),
-                    Integer.parseInt(resultArray[2])
-                ).enqueue(object : retrofit2.Callback<getRoomRecommendationModel> {
-                    override fun onResponse(
-                        call: Call<getRoomRecommendationModel>,
-                        response: Response<getRoomRecommendationModel>
-                    ) {
-                        Log.d("정보", "${response.body()}")
-                        if (response.isSuccessful) {
-                            response.body()?.let {
-                                adapter.setRepoList(it.roomInfoList)
+                if (resultArray.size >= 3) {
+                    api.getRoomRecommendation(
+                        preferences.getString("userId", ""),
+                        Integer.parseInt(resultArray[0]),
+                        Integer.parseInt(resultArray[1]),
+                        Integer.parseInt(resultArray[2])
+                    ).enqueue(object : retrofit2.Callback<getRoomRecommendationModel> {
+                        override fun onResponse(
+                            call: Call<getRoomRecommendationModel>,
+                            response: Response<getRoomRecommendationModel>
+                        ) {
+                            Log.d("정보", "${response.body()}")
+                            if (response.isSuccessful) {
+                                response.body()?.let {
+                                    adapter.setRepoList(it.roomInfoList)
+                                }
                             }
                         }
-                    }
 
-                    override fun onFailure(call: Call<getRoomRecommendationModel>, t: Throwable) {
-                        Log.d("getRoomList", "fail")
-                    }
+                        override fun onFailure(call: Call<getRoomRecommendationModel>, t: Throwable) {
+                            Log.d("오류", t.toString())
+                        }
+                    })
+                } else {
+                    Log.d("오류", "resultArray의 크기가 3 이하입니다.")
+                }
 
-                })
             }
 
             override fun onFailure(call: Call<getRecommendationList>, t: Throwable) {
