@@ -24,6 +24,10 @@ class MatchingTotalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMatchingTotalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+
         val area1 = intent.getStringExtra("area1")
         binding.tvArea1.text = area1
         val area2 = intent.getStringExtra("area2")
@@ -133,6 +137,9 @@ class MatchingTotalActivity : AppCompatActivity() {
                             i++
                         }
 
+
+                        val filteredRooms = mutableListOf<Array<String>>()
+
                         var j = 0;
                         while (j < jsonArray.length()) {
                             var count = 0.0f
@@ -145,6 +152,16 @@ class MatchingTotalActivity : AppCompatActivity() {
                                 }
                             }
                             count += (recount / 3)
+
+                            val roomDate = Integer.parseInt(array[j][4])
+                            if (roomDate >= Integer.parseInt(useroption[3].toString())
+                                && roomDate <= Integer.parseInt(useroption[4].toString())
+                            ) {
+                                // 날짜가 포함되는 방을 리스트에 추가
+                                filteredRooms.add(array[j])
+                            }
+
+
                             if (Integer.parseInt(array[j][4]) >= Integer.parseInt(useroption[3].toString())
                                 && Integer.parseInt(array[j][4]) <= Integer.parseInt(useroption[4].toString())
                             )

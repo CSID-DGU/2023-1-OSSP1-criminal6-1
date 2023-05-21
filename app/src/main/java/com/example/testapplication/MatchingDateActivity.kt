@@ -55,7 +55,7 @@ class MatchingDateActivity : AppCompatActivity() {
             startdate.show()
         }
 
-
+        //종료일
         binding.ibEnddate.setOnClickListener {
             val startDate = binding.tvStartdate.text.toString()
             val startDateParts = startDate.split("/")
@@ -108,7 +108,7 @@ class MatchingDateActivity : AppCompatActivity() {
             finish()
         }
 
-
+        //종료일
         binding.btnPrev.setOnClickListener {
             val intent = Intent(this, MatchingLocalActivity::class.java)
             startActivity(intent)
