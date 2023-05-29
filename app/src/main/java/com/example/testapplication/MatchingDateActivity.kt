@@ -55,7 +55,15 @@ class MatchingDateActivity : AppCompatActivity() {
             startdate.show()
         }
 
+        //종료일
         binding.ibEnddate.setOnClickListener {
+            val startDate = binding.tvStartdate.text.toString()
+            val startDateParts = startDate.split("/")
+            val startYear = startDateParts[0].toInt()
+            val startMonth = startDateParts[1].toInt() - 1
+            val startDay = startDateParts[2].toInt()
+
+
             val datepickercalendar = Calendar.getInstance()
             val year = datepickercalendar.get(Calendar.YEAR)
             val month = datepickercalendar.get(Calendar.MONTH)
@@ -80,7 +88,11 @@ class MatchingDateActivity : AppCompatActivity() {
                 month,
                 day
             )
-            enddate.datePicker.minDate = System.currentTimeMillis() - 1000;
+            val startDateMillis = Calendar.getInstance().apply {
+                set(startYear, startMonth, startDay, 0, 0, 0)
+                set(Calendar.MILLISECOND, 0)
+            }.timeInMillis
+            enddate.datePicker.minDate = startDateMillis
             enddate.show()
         }
 
@@ -96,7 +108,7 @@ class MatchingDateActivity : AppCompatActivity() {
             finish()
         }
 
-
+        //종료일
         binding.btnPrev.setOnClickListener {
             val intent = Intent(this, MatchingLocalActivity::class.java)
             startActivity(intent)

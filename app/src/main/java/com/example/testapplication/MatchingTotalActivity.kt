@@ -24,6 +24,10 @@ class MatchingTotalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMatchingTotalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+
         val area1 = intent.getStringExtra("area1")
         binding.tvArea1.text = area1
         val area2 = intent.getStringExtra("area2")
@@ -50,6 +54,8 @@ class MatchingTotalActivity : AppCompatActivity() {
             diff = "1"
         else if (diff.toString() == "하")
             diff = "0"
+        else if (diff.toString() == "")
+            diff = "11"
 
         var activity = intent.getStringExtra("activity")
         binding.tvActivity.text = activity
@@ -60,6 +66,8 @@ class MatchingTotalActivity : AppCompatActivity() {
             activity = "1"
         else if (activity.toString() == "하")
             activity = "0"
+        else if (activity.toString() == "")
+            activity = "11"
 
         var fear = intent.getStringExtra("fear")
         binding.tvFear.text = fear
@@ -71,6 +79,8 @@ class MatchingTotalActivity : AppCompatActivity() {
             fear = "1"
         else if (fear.toString() == "하")
             fear = "0"
+        else if (fear.toString() == "")
+            fear = "11"
 
         binding.btnBack.setOnClickListener {
             val intent = Intent(this, MatchingOptionActivity::class.java)
@@ -127,6 +137,9 @@ class MatchingTotalActivity : AppCompatActivity() {
                             i++
                         }
 
+
+                        val filteredRooms = mutableListOf<Array<String>>()
+
                         var j = 0;
                         while (j < jsonArray.length()) {
                             var count = 0.0f
@@ -139,8 +152,18 @@ class MatchingTotalActivity : AppCompatActivity() {
                                 }
                             }
                             count += (recount / 3)
-                            if (Integer.parseInt(array[j][4]) >= Integer.parseInt(useroption[3])
-                                && Integer.parseInt(array[j][4]) <= Integer.parseInt(useroption[4])
+
+                            val roomDate = Integer.parseInt(array[j][4])
+                            if (roomDate >= Integer.parseInt(useroption[3].toString())
+                                && roomDate <= Integer.parseInt(useroption[4].toString())
+                            ) {
+                                // 날짜가 포함되는 방을 리스트에 추가
+                                filteredRooms.add(array[j])
+                            }
+
+
+                            if (Integer.parseInt(array[j][4]) >= Integer.parseInt(useroption[3].toString())
+                                && Integer.parseInt(array[j][4]) <= Integer.parseInt(useroption[4].toString())
                             )
                                 count++
                             if (array[j][5] == useroption[5])

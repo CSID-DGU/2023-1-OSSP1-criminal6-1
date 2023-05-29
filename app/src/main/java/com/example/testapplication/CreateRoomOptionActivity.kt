@@ -150,7 +150,7 @@ class CreateRoomOptionActivity : AppCompatActivity() {
                     Binding.activityHigh.isSelected = Binding.activityHigh.isSelected != true
                 if (activity == "하")
                     Binding.activityLow.isSelected = Binding.activityLow.isSelected != true
-                activity = "상"
+                activity = "중"
             }
             else activity = ""
             Binding.activityMiddle.isSelected = Binding.activityMiddle.isSelected!=true
