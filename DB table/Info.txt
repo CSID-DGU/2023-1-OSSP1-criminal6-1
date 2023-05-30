@@ -1,0 +1,12 @@
+CREATE TABLE `Info` (
+    `date`	        VARCHAR(45)	    NOT NULL,
+    `region1`	    VARCHAR(45)	    NOT NULL,
+    `genre`	        VARCHAR(45)	    NOT NULL,
+    `difficulty`	FLOAT(11)	    NOT NULL	DEFAULT 0,
+    `fear`	        FLOAT(11)	    NOT NULL	DEFAULT 0,
+    `activity`	    FLOAT(11)	    NOT NULL	DEFAULT 0,
+    `roomID`	    INT(11)	        NOT NULL
+);
+
+ALTER TABLE `Info` ADD CONSTRAINT `FK_Room_TO_Info_1` FOREIGN KEY (`roomID`)
+    REFERENCES `Room` (`roomID`);
