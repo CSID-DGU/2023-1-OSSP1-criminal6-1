@@ -18,15 +18,15 @@ class AppUser(models.Model):
 class Room(models.Model):
     title = models.CharField(max_length=255)
     region1 = models.CharField(max_length=255)
-    region2 = models.CharField(max_length=255)
-    region3 = models.CharField(max_length=255)
+    #region2 = models.CharField(max_length=255)
+    #region3 = models.CharField(max_length=255)
     date = models.DateField()
     genre = models.CharField(max_length=255)
     difficulty = models.IntegerField()
     fear = models.IntegerField()
     activity = models.IntegerField()
     room_intro = models.TextField()
-    member_num = models.IntegerField()
+    #member_num = models.IntegerField()
     #필드 정의 (방의 속성을 나타냄)
 
     def __str__(self):

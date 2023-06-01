@@ -1,7 +1,26 @@
-
-from django.urls import include, path
-from rest_framework import routers
+from django.conf import settings
+from django.urls import include, path, re_path
+from rest_framework import routers, permissions
 from . import views #views.py import
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+#API 명세서 자동 생성 drf-yasg
+#swagger 정보 설정, 관련 엔드 포인트 추가
+#swagger 엔드포인트는 DEBUG Mode에서만 노출
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Criminal6 Project",
+      default_version='v1',
+      description="Criminal6-project API 문서",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@snippets.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   validators=['flex', 'ssv'],
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 router = routers.DefaultRouter() 
 #DefaultRouter를 설정
@@ -9,6 +28,12 @@ router.register('AppUser', views.UserViewSet)
 #itemviewset 과 item이라는 router 등록
 router.register('Room', views.RoomViewSet) 
 
-urlpatterns = [
-    path('', include(router.urls))
-]
+#swagger을 통한 path 추가
+if settings.DEBUG:
+    urlpatterns = [
+        path('', include(router.urls)),
+        re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+        re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+        re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc')
+        #path('app이름', include('app이름.urls'))
+    ]
