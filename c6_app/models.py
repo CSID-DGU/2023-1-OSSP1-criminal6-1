@@ -1,33 +1,46 @@
 from django.db import models
 
-# Create your models here.
-
-#AppUser 모델 정의 
 class AppUser(models.Model):
-    # id = models.AutoField(primary_key=True)
-    password = models.CharField(max_length=255)
-    name = models.CharField(max_length=255,default='')
-    
-    def __str__(self):
-        return self.name
-        
+    user = models.IntegerField(primary_key=True)
+    id = models.CharField(max_length=45)
+    password = models.CharField(max_length=45)
+    name = models.CharField(max_length=45)
+    roomID2 = models.IntegerField()
 
-#class 모델 클래스를 설정하면 데이터베이스에 테이블이 생성된다. 
+    class Meta:
+        db_table = 'AppUser'
 
-#Room 모델 정의 
 class Room(models.Model):
-    title = models.CharField(max_length=255)
-    region1 = models.CharField(max_length=255)
-    #region2 = models.CharField(max_length=255)
-    #region3 = models.CharField(max_length=255)
-    date = models.DateField()
-    genre = models.CharField(max_length=255)
-    difficulty = models.IntegerField()
-    fear = models.IntegerField()
-    activity = models.IntegerField()
-    room_intro = models.TextField()
-    #member_num = models.IntegerField()
-    #필드 정의 (방의 속성을 나타냄)
+    roomID = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=45)
+    roomIntro = models.CharField(max_length=200, null=True)
+    user2 = models.IntegerField()
 
-    def __str__(self):
-        return self.title
+    class Meta:
+        db_table = 'Room'
+
+
+
+class Info(models.Model):
+    date = models.CharField(max_length=45)
+    region1 = models.CharField(max_length=45)
+    genre = models.CharField(max_length=45)
+    difficulty = models.FloatField(default=0)
+    fear = models.FloatField(default=0)
+    activity = models.FloatField(default=0)
+    roomID = models.IntegerField()
+
+    class Meta:
+        db_table = 'Info'
+
+
+class Chat(models.Model):
+    chatID = models.IntegerField(null=True)
+    roomID = models.IntegerField(null=True)
+    senderID = models.CharField(max_length=45, null=True)
+    content = models.TextField(null=True)
+    createAT = models.DateTimeField(null=True)
+    roomID2 = models.IntegerField()
+
+    class Meta:
+        db_table = 'Chat'
