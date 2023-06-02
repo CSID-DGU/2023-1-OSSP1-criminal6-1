@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.sign
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,11 +6,14 @@ import android.text.TextUtils
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import com.example.testapplication.UserModel
+import com.example.testapplication.UserSignupPostModel
 import com.example.testapplication.databinding.ActivityRegisterBinding
+import com.example.testapplication.service.APIS
 import retrofit2.Call
 import retrofit2.Callback
 
-class RegisterActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
 
     private val api = APIS.create()

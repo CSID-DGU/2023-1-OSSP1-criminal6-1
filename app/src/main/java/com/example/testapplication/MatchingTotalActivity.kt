@@ -7,12 +7,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.testapplication.databinding.ActivityMatchingTotalBinding
-import com.google.common.collect.Comparators
+import com.example.testapplication.service.APIS
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
-import org.json.JSONArray
 import org.json.JSONObject
-import org.json.JSONTokener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

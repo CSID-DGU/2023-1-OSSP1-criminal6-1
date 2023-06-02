@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.databinding.ActivityRecommendListBinding
-import com.example.testapplication.databinding.ActivityRegisterBinding
+import com.example.testapplication.service.APIS
 import retrofit2.Call
 import retrofit2.Response
 

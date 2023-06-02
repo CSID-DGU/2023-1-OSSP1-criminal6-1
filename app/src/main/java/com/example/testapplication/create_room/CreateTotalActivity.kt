@@ -1,11 +1,14 @@
-package com.example.testapplication
+package com.example.testapplication.create_room
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.testapplication.MainActivity
+import com.example.testapplication.createRoomPostModel
 import com.example.testapplication.databinding.ActivityCreateTotalBinding
+import com.example.testapplication.service.APIS
 import retrofit2.Call
 import retrofit2.Response
 
@@ -22,10 +25,6 @@ class CreateTotalActivity : AppCompatActivity() {
         binding.tvRoomtitle.text = roomtitle
         val region1 = intent.getStringExtra("area1")
         binding.tvArea1.text = region1
-        val region2 = intent.getStringExtra("area2")
-        binding.tvArea2.text = region2
-        val region3 = intent.getStringExtra("area3")
-        binding.tvArea3.text = region3
         val date = intent.getStringExtra("date")
         binding.tvDate.text = date
         val genre = intent.getStringExtra("genre")
@@ -77,8 +76,6 @@ class CreateTotalActivity : AppCompatActivity() {
                 createrUserId,
                 roomtitle.toString(),
                 region1.toString(),
-                region2.toString(),
-                region3.toString(),
                 dateString,
                 genre.toString(),
                 difficultyNum,

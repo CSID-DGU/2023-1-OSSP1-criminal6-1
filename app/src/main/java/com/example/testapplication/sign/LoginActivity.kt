@@ -1,12 +1,14 @@
-package com.example.testapplication
+package com.example.testapplication.sign
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.testapplication.MainActivity
+import com.example.testapplication.UserSigninModel
 import com.example.testapplication.databinding.ActivityLoginBinding
+import com.example.testapplication.service.APIS
 import retrofit2.Call
 import retrofit2.Response
 
@@ -27,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         val Password = binding.loginPassword
 
         binding.signupBtn.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
 

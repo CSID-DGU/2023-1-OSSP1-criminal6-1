@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.chat
 
 import androidx.annotation.DrawableRes
 

@@ -47,4 +47,5 @@
     <string name="login_failed">"Login failed"</string>
 
     <string name="roomIntroEX"> 때 이른 봄 몇 송이 꺾어다 너의 방 문 앞에 두었어. 긴 잠 실컷 자고 나오면 그때쯤엔 예쁘게 피어 있겠다. 별 띄운 여름 한 컵 따라다 너의 머리맡에 두었어. 금세 다 녹아버릴 텐데... 너는 아직 혼자 쉬고 싶은가 봐. </string>
+    <string name="nomatchingtext">매칭된 방이 없습니다</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.chat
 
 import android.content.Context
 import android.content.Intent
@@ -8,18 +8,19 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.databinding.LayoutChatlistBinding
+import com.example.testapplication.getRoomListModel
 
 class ChatlistAdapter(context : Context): RecyclerView.Adapter<ChatlistAdapter.ChatlistViewHolder>() {
 
     private val inflater by lazy { LayoutInflater.from(context)}
     private var categorylist: List<getRoomListModel.roomData> = emptyList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatlistAdapter.ChatlistViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatlistViewHolder {
         val binding = LayoutChatlistBinding.inflate(inflater, parent,false)
         return ChatlistViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ChatlistAdapter.ChatlistViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChatlistViewHolder, position: Int) {
         holder.bind(categorylist[position])
 
         holder.itemView.setOnClickListener {

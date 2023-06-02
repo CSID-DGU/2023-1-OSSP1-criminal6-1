@@ -1,4 +1,4 @@
-package com.example.testapplication.adapter
+package com
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -13,12 +13,12 @@ class CategoryAdapter(context : Context):RecyclerView.Adapter<CategoryAdapter.Re
     private val inflater by lazy {LayoutInflater.from(context)}
     private var repoList: List<CategoryData> = emptyList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.RecyclerViewViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewViewHolder {
         val binding = LayoutCategoryListBinding.inflate(inflater, parent,false)
         return RecyclerViewViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CategoryAdapter.RecyclerViewViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerViewViewHolder, position: Int) {
         holder.bind(repoList[position])
 
         //holder.itemView.setOnClickListener {

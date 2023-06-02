@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.chat
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testapplication.R
+import com.example.testapplication.multi_type1
 
 class chatAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var datas = mutableListOf<chatData>()

@@ -1,24 +1,18 @@
-package com.example.testapplication
+package com.example.testapplication.chat
 
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import com.example.testapplication.*
 import com.example.testapplication.databinding.ActivityChatBinding
-import com.example.testapplication.databinding.ActivityCreateRoomLocalBinding
-import com.google.android.material.navigation.NavigationView
+import com.example.testapplication.service.APIS
 import retrofit2.Call
 import retrofit2.Response
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import kotlin.concurrent.timer
 
 class ChatActivity : AppCompatActivity() {
 

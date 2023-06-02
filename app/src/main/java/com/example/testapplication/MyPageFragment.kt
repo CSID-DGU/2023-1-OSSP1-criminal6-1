@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
-import com.example.testapplication.databinding.FragmentMatchingBinding
 import com.example.testapplication.databinding.FragmentMypageBinding
+import com.example.testapplication.sign.LoginActivity
 
 class MyPageFragment: Fragment() {
     private var binding: FragmentMypageBinding? = null
