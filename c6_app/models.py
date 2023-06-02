@@ -1,46 +1,42 @@
 from django.db import models
 
+# Create your models here.
+#class 모델 클래스를 설정하면 데이터베이스에 테이블이 생성된다. 
+
+#AppUser 모델 정의 
 class AppUser(models.Model):
-    user = models.IntegerField(primary_key=True)
-    id = models.CharField(max_length=45)
-    password = models.CharField(max_length=45)
-    name = models.CharField(max_length=45)
-    roomID2 = models.IntegerField()
-
-    class Meta:
-        db_table = 'AppUser'
-
+    userID = models.IntegerField(primary_key = True)
+    id = models.CharField(max_length = 45, unique = True)
+    password = models.CharField(max_length = 45)
+    name = models.CharField(max_length = 45, default = '')
+    roomID = models.ForeignKey("Room", on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.name
+        
+#Room 모델 정의 
 class Room(models.Model):
-    roomID = models.IntegerField(primary_key=True)
-    title = models.CharField(max_length=45)
-    roomIntro = models.CharField(max_length=200, null=True)
-    user2 = models.IntegerField()
+    roomID = models.IntegerField(primary_key = True)
+    title = models.CharField(max_length = 45, default = '')
+    roomIntro = models.TextField(max_length = 200, null=True)
+    date = models.DateField(max_length = 45)
+    region = models.CharField(max_length = 45)
+    genre = models.CharField(max_length = 45)
+    difficulty = models.FloatField(default = 0)
+    fear = models.FloatField(default = 0)
+    activity = models.FloatField(default = 0) 
+    #필드 정의 (방의 속성을 나타냄)
 
-    class Meta:
-        db_table = 'Room'
-
-
-
-class Info(models.Model):
-    date = models.CharField(max_length=45)
-    region1 = models.CharField(max_length=45)
-    genre = models.CharField(max_length=45)
-    difficulty = models.FloatField(default=0)
-    fear = models.FloatField(default=0)
-    activity = models.FloatField(default=0)
-    roomID = models.IntegerField()
-
-    class Meta:
-        db_table = 'Info'
-
-
+    def __str__(self):
+        return self.roomID
+    
+#Chat 모델 정의
 class Chat(models.Model):
-    chatID = models.IntegerField(null=True)
-    roomID = models.IntegerField(null=True)
-    senderID = models.CharField(max_length=45, null=True)
-    content = models.TextField(null=True)
-    createAT = models.DateTimeField(null=True)
-    roomID2 = models.IntegerField()
+    chatID = models.IntegerField(max_length = 11)
+    senderID = models.ForeignKey("AppUser", on_delete=models.CASCADE)
+    content = models.TextField()
+    createAT = models.DateTimeField()
+    roomId = models.ForeignKey("Room", on_delete=models.CASCADE)
 
-    class Meta:
-        db_table = 'Chat'
+    def __str__(self):
+        return self.chatID

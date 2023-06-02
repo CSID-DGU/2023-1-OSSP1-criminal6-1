@@ -27,6 +27,8 @@ router = routers.DefaultRouter()
 router.register('AppUser', views.UserViewSet) 
 #itemviewset 과 item이라는 router 등록
 router.register('Room', views.RoomViewSet) 
+#Chat router 추가
+router.register('Chat', views.ChatViewSet) 
 
 #swagger을 통한 path 추가
 if settings.DEBUG:

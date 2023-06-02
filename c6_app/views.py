@@ -2,8 +2,8 @@
 from django.shortcuts import render
 # Create your views here.
 from rest_framework import viewsets
-from .serializers import UserSerializer,RoomSerializer
-from .models import AppUser,Room
+from .serializers import UserSerializer, RoomSerializer, ChatSerializer
+from .models import AppUser, Room, Chat
 from rest_framework import status
 from rest_framework.decorators import api_view
 from django.http.response import HttpResponse
@@ -20,6 +20,9 @@ class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
+class ChatViewSet(viewsets.ModelViewSet):
+    queryset = Chat.objects.all()
+    serializer_class = ChatSerializer
 
 # @api_view(['POST'])
 # #들어온 데이터를 db에 저장하는 함수 
@@ -33,3 +36,7 @@ class RoomViewSet(viewsets.ModelViewSet):
 #         return Response(serializer.errors ,status=status.HTTP_400_BAD_REQUEST)
 #         # 유효하지 않으면 에러로 응답
 
+# @api_view(['GET'])
+# def getDate(request):
+#     person = {'name':'Dennis', 'age':28}
+#     return Response(person)
