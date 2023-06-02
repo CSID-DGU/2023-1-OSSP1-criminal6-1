@@ -1,12 +1,12 @@
-package com.example.testapplication
+package com.example.testapplication.service
 
+import com.example.testapplication.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import retrofit2.http.Field
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -40,8 +40,6 @@ public interface APIS {
         @Field("createrUserId") createrUserId: String? = null,
         @Field("title") title: String? = null,
         @Field("region1") region1: String? = null,
-        @Field("region2") region2: String? = null,
-        @Field("region3") region3: String? = null,
         @Field("date") date: String? = null,
         @Field("genre") genre: String? = null,
         @Field("difficulty") difficulty: Int? = null,

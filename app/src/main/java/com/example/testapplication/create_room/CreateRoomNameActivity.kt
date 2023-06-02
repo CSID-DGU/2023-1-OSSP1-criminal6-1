@@ -1,9 +1,7 @@
-package com.example.testapplication
+package com.example.testapplication.create_room
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testapplication.databinding.ActivityCreateRoomNameBinding
 
@@ -17,8 +15,6 @@ class CreateRoomNameActivity : AppCompatActivity() {
         setContentView(Binding.root)
         val DateString =intent.getStringExtra("date")
         val area1 = intent.getStringExtra("area1")
-        val area2 = intent.getStringExtra("area2")
-        val area3 = intent.getStringExtra("area3")
         val genre = intent.getStringExtra("genre")
         val diff = intent.getStringExtra("diff")
         val activity = intent.getStringExtra("activity")
@@ -31,8 +27,6 @@ class CreateRoomNameActivity : AppCompatActivity() {
             val intent = Intent(this, CreateTotalActivity::class.java)
             intent.putExtra("date", DateString)
             intent.putExtra("area1", area1)
-            intent.putExtra("area2", area2)
-            intent.putExtra("area3", area3)
             intent.putExtra("genre", genre)
             intent.putExtra("diff", diff)
             intent.putExtra("fear", fear)

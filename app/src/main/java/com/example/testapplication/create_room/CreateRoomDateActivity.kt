@@ -1,14 +1,14 @@
-package com.example.testapplication
+package com.example.testapplication.create_room
 
 import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.appcompat.app.AppCompatActivity
+import com.example.testapplication.MatchingFragment
+import com.example.testapplication.R
 import com.example.testapplication.databinding.ActivityCreateRoomDateBinding
-import java.text.SimpleDateFormat
 import java.util.*
 
 class CreateRoomDateActivity : AppCompatActivity() {
@@ -22,8 +22,7 @@ class CreateRoomDateActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val area1 = intent.getStringExtra("area1")
-        val area2 = intent.getStringExtra("area2")
-        val area3 = intent.getStringExtra("area3")
+
 
         //시작일
         binding.ibStartdate.setOnClickListener {
@@ -62,8 +61,6 @@ class CreateRoomDateActivity : AppCompatActivity() {
             val intent = Intent(this, CreateRoomOptionActivity::class.java)
             intent.putExtra("date", DateString)
             intent.putExtra("area1", area1)
-            intent.putExtra("area2", area2)
-            intent.putExtra("area3", area3)
             startActivity(intent)
             finish()
         }

@@ -1,15 +1,14 @@
-package com.example.testapplication
+package com.example.testapplication.create_room
 
 import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.view.View;
 import android.widget.AdapterView;
 import androidx.appcompat.app.AppCompatActivity
+import com.example.testapplication.MainActivity
 import com.example.testapplication.databinding.ActivityCreateRoomOptionBinding
 
 
@@ -27,8 +26,6 @@ class CreateRoomOptionActivity : AppCompatActivity() {
 
         val DateString = intent.getStringExtra("date")
         val area1 = intent.getStringExtra("area1")
-        val area2 = intent.getStringExtra("area2")
-        val area3 = intent.getStringExtra("area3")
 
         //스피너 어댑터
         //var sData = resources.getStringArray(R.array.testarray)
@@ -173,8 +170,6 @@ class CreateRoomOptionActivity : AppCompatActivity() {
             val intent = Intent(this, CreateRoomNameActivity::class.java)
             intent.putExtra("date", DateString)
             intent.putExtra("area1", area1)
-            intent.putExtra("area2", area2)
-            intent.putExtra("area3", area3)
             intent.putExtra("genre", genre)
             intent.putExtra("diff", diff)
             intent.putExtra("fear", fear)
