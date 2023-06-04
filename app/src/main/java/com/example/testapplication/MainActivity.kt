@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import com.example.testapplication.chat.ChatFragment
 import com.example.testapplication.databinding.ActivityMainBinding
+import com.example.testapplication.matching.MatchingFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

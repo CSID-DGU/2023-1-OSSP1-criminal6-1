@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testapplication.MatchingFragment
+import com.example.testapplication.matching.MatchingFragment
 import com.example.testapplication.R
 import com.example.testapplication.databinding.ActivityCreateRoomDateBinding
 import java.util.*

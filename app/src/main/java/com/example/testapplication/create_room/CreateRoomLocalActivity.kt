@@ -9,7 +9,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testapplication.MainActivity
-import com.example.testapplication.MatchingFragment
 import com.example.testapplication.databinding.ActivityCreateRoomLocalBinding
 
 

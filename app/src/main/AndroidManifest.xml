@@ -16,17 +16,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".MatchingFailActivity"
+            android:name=".matching.MatchingFailActivity"
             android:exported="true" />
         <activity
-            android:name=".MatchingLocalActivity"
+            android:name=".matching.MatchingLocalActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MatchingDateActivity"
+            android:name=".matching.MatchingDateActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,14 +39,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MatchingOptionActivity"
+            android:name=".matching.MatchingOptionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MatchingTotalActivity"
+            android:name=".matching.MatchingTotalActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

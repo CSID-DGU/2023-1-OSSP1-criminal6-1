@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.matching
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.example.testapplication.R
 import com.example.testapplication.databinding.ActivityMatchingDateBinding
 import java.util.*
 

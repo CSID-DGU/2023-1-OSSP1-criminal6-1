@@ -1,9 +1,9 @@
-package com.example.testapplication
+package com.example.testapplication.matching
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.testapplication.create_room.CreateRoomDateActivity
+import com.example.testapplication.MainActivity
 import com.example.testapplication.create_room.CreateRoomLocalActivity
 import com.example.testapplication.databinding.ActivityMatchingFailBinding
 

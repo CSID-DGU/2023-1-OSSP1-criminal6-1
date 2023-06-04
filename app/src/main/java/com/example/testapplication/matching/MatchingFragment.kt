@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.matching
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import com.example.testapplication.R
 import com.example.testapplication.create_room.CreateRoomLocalActivity
 import com.example.testapplication.databinding.FragmentMatchingBinding
 

@@ -1,16 +1,14 @@
-package com.example.testapplication
+package com.example.testapplication.matching
 
 import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.view.View;
 import android.widget.AdapterView;
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testapplication.databinding.ActivityCreateRoomOptionBinding
+import com.example.testapplication.MainActivity
 import com.example.testapplication.databinding.ActivityMatchingOptionBinding
 
 

@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.matching
 
 import android.content.Intent
 import android.os.Build
@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.testapplication.Recommend_list
 import com.example.testapplication.databinding.ActivityMatchingTotalBinding
+import com.example.testapplication.getAllRoomInfoModel
 import com.example.testapplication.service.APIS
 import com.google.gson.GsonBuilder
 import org.json.JSONObject
