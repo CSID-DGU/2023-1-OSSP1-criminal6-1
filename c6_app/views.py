@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # Create your views here.
 from rest_framework import viewsets
 from .serializers import UserSerializer, RoomSerializer, ChatSerializer
@@ -8,6 +8,9 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from django.http.response import HttpResponse
 from rest_framework.response import Response
+from django.contrib import auth
+from django.contrib.auth.models import AppUser
+from django.contrib.auth import authenticate
 
 # Create your views here.
 
@@ -40,3 +43,17 @@ def post_api(request):
                 'result': 'fail'
             }
             return Response(result, status=400)
+        
+@api_view(['GET'])
+def login(request):
+    if request.method == 'POST':
+        userID = request.POST['userID']
+        id = request.POST['id']
+        password = request.POST['password']
+        if AppUser is not None:
+            auth.login(request, AppUser)
+            return redirect('home')
+        else:
+            return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
+    else:
+        return render(request, 'login.html')
