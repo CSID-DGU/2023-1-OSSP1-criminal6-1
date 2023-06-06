@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view
 from django.http.response import HttpResponse
 from rest_framework.response import Response
 from django.contrib import auth
-from django.contrib.auth.models import AppUser
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 # Create your views here.
@@ -43,7 +43,8 @@ def post_api(request):
                 'result': 'fail'
             }
             return Response(result, status=400)
-        
+
+#로그인시 호출되는 함수       
 @api_view(['GET'])
 def login(request):
     if request.method == 'POST':
