@@ -24,19 +24,19 @@ class ChatViewSet(viewsets.ModelViewSet):
     queryset = Chat.objects.all()
     serializer_class = ChatSerializer
 
-# @api_view(['POST'])
-# #들어온 데이터를 db에 저장하는 함수 
-# def post_api(request):
-#     if request.method == 'POST':
-#         serializer = UserSerializer(data = request.data, many=True)
-#         #유효성 검사
-#         if(serializer.is_valid()):
-#             serializer.save()
-#             return Response(serializer.data ,status=200)
-#         return Response(serializer.errors ,status=status.HTTP_400_BAD_REQUEST)
-#         # 유효하지 않으면 에러로 응답
-
-# @api_view(['GET'])
-# def getDate(request):
-#     person = {'name':'Dennis', 'age':28}
-#     return Response(person)
+#회원가입시 호출되는 함수 
+@api_view(['POST'])
+def post_api(request):
+    if request.method == 'POST':
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            result = {
+                'result': 'success'
+            }
+            return Response(result, status=200)
+        else:
+            result = {
+                'result': 'fail'
+            }
+            return Response(result, status=400)
