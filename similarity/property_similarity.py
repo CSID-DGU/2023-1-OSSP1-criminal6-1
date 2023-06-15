@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 #사용자 정보를 받아올 클래스
 class User:
@@ -16,7 +17,7 @@ room_data=[
     ["방5", int(3), int(2), int(1)]]
 
 #사용자 정보 임의로 설정
-user_Info = User(None, 2, 3)
+user_Info = User(None, None, None)
 
 #null값인 property 구별용 변수
 diff_null=0
@@ -33,7 +34,7 @@ if user_Info.activity is None:
 count = diff_null+horr_null+acti_null
 print("확인용 출력: ", diff_null, horr_null, acti_null)
 
-property_similarity=[[]]
+property_similarity=[]
 
 #null값인 property가 몇개인지 검사
 
@@ -41,18 +42,18 @@ if count==0: #null값이 하나도 없을때
 
     #room_data배열에서 각 행마다 반복 -> 난공활 정보 가져오기
     for room in room_data:  
-        room_diff = room_data[1]
-        room_horr = room_data[2]
-        room_acti = room_data[3]
+        room_diff = room[1]
+        room_horr = room[2]
+        room_acti = room[3]
 
         #np용 배열로 저장
         room_vector = np.array([room_diff, room_horr, room_acti])
-        user_vector = np.array([user_Info.difficuty, user_Info.horror, user_Info.activity])
+        user_vector = np.array([user_Info.difficulty, user_Info.horror, user_Info.activity])
 
         #유클리드 거리 계산
         euclidean_distance = np.linalg.norm(room_vector - user_vector)
         similarity = 1 / (1 + euclidean_distance)
-        new_array = [room_data[0], similarity]
+        new_array = [room[0], similarity]
         #방1개에 대한 최종 유사도는 배열로 저장해준다
         property_similarity.append(new_array)
         print(property_similarity)
@@ -60,8 +61,8 @@ if count==0: #null값이 하나도 없을때
 elif count==1: #null값이 하나만 있을 때
     if diff_null==1: #null값이 난이도일때
         for room in room_data:
-            room_horr = room_data[2]
-            room_acti = room_data[3]
+            room_horr = room[2]
+            room_acti = room[3]
 
             #np용 배열로 저장
             room_vector = np.array([room_horr, room_acti])
@@ -70,14 +71,14 @@ elif count==1: #null값이 하나만 있을 때
             #유클리드 거리 계산
             euclidean_distance = np.linalg.norm(room_vector - user_vector)
             similarity = 1 / (1 + euclidean_distance)
-            new_array = [room_data[0], similarity]
+            new_array = [room[0], similarity]
             #방1개에 대한 최종 유사도는 배열로 저장해준다
             property_similarity.append(new_array)
             print(property_similarity)
     elif horr_null==1: #null값이 공포도일때
         for room in room_data:
-            room_diff = room_data[1]
-            room_acti = room_data[3]
+            room_diff = room[1]
+            room_acti = room[3]
 
             #np용 배열로 저장
             room_vector = np.array([room_diff, room_acti])
@@ -86,14 +87,14 @@ elif count==1: #null값이 하나만 있을 때
             #유클리드 거리 계산
             euclidean_distance = np.linalg.norm(room_vector - user_vector)
             similarity = 1 / (1 + euclidean_distance)
-            new_array = [room_data[0], similarity]
+            new_array = [room[0], similarity]
             #방1개에 대한 최종 유사도는 배열로 저장해준다
             property_similarity.append(new_array)
             print(property_similarity)
     elif acti_null==1:
         for room in room_data:
-            room_diff = room_data[1]
-            room_horr = room_data[2]
+            room_diff = room[1]
+            room_horr = room[2]
 
             #np용 배열로 저장
             room_vector = np.array([room_diff, room_horr])
@@ -102,7 +103,7 @@ elif count==1: #null값이 하나만 있을 때
             #유클리드 거리 계산
             euclidean_distance = np.linalg.norm(room_vector - user_vector)
             similarity = 1 / (1 + euclidean_distance)
-            new_array = [room_data[0], similarity]
+            new_array = [room[0], similarity]
             #방1개마다 최종 유사도는 배열로 저장해준다
             property_similarity.append(new_array)
             print(property_similarity)
@@ -110,7 +111,7 @@ elif count==1: #null값이 하나만 있을 때
 elif count==2: #null값이 2개일때
     if diff_null==1 and horr_null==1: #활동성 값만 계산해주면 될때
         for room in room_data:
-            room_acti = room_data[3]
+            room_acti = room[3]
 
             #np용 배열로 저장
             room_vector = np.array([room_acti])
@@ -119,13 +120,13 @@ elif count==2: #null값이 2개일때
             #유클리드 거리 계산
             euclidean_distance = np.linalg.norm(room_vector - user_vector)
             similarity = 1 / (1 + euclidean_distance)
-            new_array = [room_data[0], similarity]
+            new_array = [room[0], similarity]
             #방1개마다 대한 최종 유사도는 배열로 저장해준다
             property_similarity.append(new_array)
             print(property_similarity)
     elif diff_null==1 and acti_null==1: #공포도 값만 계산해주면 될때
         for room in room_data:
-            room_horr = room_data[2]
+            room_horr = room[2]
 
             #np용 배열로 저장
             room_vector = np.array([room_horr])
@@ -134,13 +135,13 @@ elif count==2: #null값이 2개일때
             #유클리드 거리 계산
             euclidean_distance = np.linalg.norm(room_vector - user_vector)
             similarity = 1 / (1 + euclidean_distance)
-            new_array = [room_data[0], similarity]
+            new_array = [room[0], similarity]
             #방1개마다 대한 최종 유사도는 배열로 저장해준다
             property_similarity.append(new_array)
             print(property_similarity)
     elif horr_null==1 and acti_null==1: #난이도 값만 계산해주면 될때
         for room in room_data:
-            room_diff = room_data[1]
+            room_diff = room[1]
 
             #np용 배열로 저장
             room_vector = np.array([room_diff])
@@ -149,10 +150,13 @@ elif count==2: #null값이 2개일때
             #유클리드 거리 계산
             euclidean_distance = np.linalg.norm(room_vector - user_vector)
             similarity = 1 / (1 + euclidean_distance)
-            new_array = [room_data[0], similarity]
+            new_array = [room[0], similarity]
             #방1개마다 대한 최종 유사도는 배열로 저장해준다
             property_similarity.append(new_array)
             print(property_similarity)
 
 elif count==3: #3개다 선택안할때 -> 랜덤추천
     print("랜덤으로 방 3개 추천해주어야 함!!!!!!!!!")
+    random_room = random.sample(room_data, 3)
+    print("랜덤으로 추천드리는 방입니다: ")
+    print(random_room)
