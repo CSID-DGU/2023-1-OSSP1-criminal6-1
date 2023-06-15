@@ -1,3 +1,4 @@
+#-- Active: 1686487772966@@oss-db.ccvk2kor8flo.ap-northeast-2.rds.amazonaws.com@3306@OSS_DB
 """
 Django settings for c6_project project.
 
@@ -10,7 +11,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from datetime import timedelta
+
+
+
 from pathlib import Path
+import pymysql  
+pymysql.version_info = (1, 3, 13, "final", 0)
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,6 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-45)td+^*f1*l5f+@(ofy3qxm^3m=fa$+#w-pqtrli0zy5qps&l"
+
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +50,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "c6_app",
     "rest_framework",
-    'drf_yasg'
+    'drf_yasg',
+
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -77,22 +91,24 @@ WSGI_APPLICATION = "c6_project.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
     # "default": {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'oss-db',
-    #     'USER': 'master',
-    #     'PASSWORD':'ossdb4692',
-    #     'HOST': 'oss-db.ccvk2kor8flo.ap-northeast-2.rds.amazonaws.com',
-    #     'PORT':'3306',
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    "default": {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'oss-db',
+        'USER': 'master',
+        'PASSWORD':'ossdb4692',
+        'HOST': 'oss-db.ccvk2kor8flo.ap-northeast-2.rds.amazonaws.com',
+        'PORT':'3306',
         # 'OPTIONS':{
         #     'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
         # }
 
     }
 }
+
+
 
 
 # Password validation
@@ -134,4 +150,6 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
