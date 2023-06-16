@@ -42,12 +42,10 @@ class RoomViewSet(viewsets.ModelViewSet):
                 fear=fear,
                 activity=activity
             )
-            return Response({'success': 'Room created successfully'}, status=status.HTTP_201_CREATED)
+            return Response({'success': 'True'}, status=status.HTTP_201_CREATED)
         else:
-            return Response({'error': 'Missing required fields'}, status=status.HTTP_400_BAD_REQUEST)
-        
-
-        
+            return Response({'success': 'False'}, status=status.HTTP_400_BAD_REQUEST)
+             
 
 class ChatViewSet(viewsets.ModelViewSet):
     queryset = Chat.objects.all()
@@ -69,13 +67,13 @@ class UserViewSet(viewsets.ModelViewSet):
             try:
                 # Check if a user with the provided username already exists
                 existing_user = AppUser.objects.get(id=id)
-                return Response({'error': '이미 존재하는 아이디입니다.'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'success': 'False'}, status=status.HTTP_400_BAD_REQUEST)
             except AppUser.DoesNotExist:
                 # Create a new user
                 user = AppUser.objects.create(id=id, password=password, name = name)
-                return Response({'success': '회원가입 성공'}, status=status.HTTP_201_CREATED)
+                return Response({'success': 'True'}, status=status.HTTP_201_CREATED)
         else:
-            return Response({'error': 'Username and password are required'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': 'False'}, status=status.HTTP_400_BAD_REQUEST)
     
     
     #로그인 시 호출되는 함수 
@@ -88,11 +86,11 @@ class UserViewSet(viewsets.ModelViewSet):
             try:
                 # 로그인 성공
                 existing_user = AppUser.objects.get(id=id, password=password)
-                return Response({'login success'}, status=status.HTTP_200_OK)
+                return Response({'success': 'True'}, status=status.HTTP_200_OK)
             except AppUser.DoesNotExist:
                 #로그인 실패
-                return Response({'등록되지 않은 회원입니다.'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'success': 'False'}, status=status.HTTP_400_BAD_REQUEST)
         else:
-            return Response({'error': 'Username and password are required'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': 'False'}, status=status.HTTP_400_BAD_REQUEST)
 
 
