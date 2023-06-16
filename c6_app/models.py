@@ -11,7 +11,16 @@ class AppUser(models.Model):
     id= models.CharField(max_length = 45, unique = True)
     password = models.CharField(max_length = 45)
     name = models.CharField(max_length = 45, default = '')
-    roomID = models.ForeignKey("Room", null=True, default=None, on_delete=models.CASCADE)
+    rooms = models.PositiveIntegerField(default=0)
+
+    def add_room(self, room_id):
+        self.rooms |= (1 << room_id)
+
+    def remove_room(self, room_id):
+        self.rooms &= ~(1 << room_id)
+
+    def has_room(self, room_id):
+        return bool(self.rooms & (1 << room_id))
     
     def __str__(self):
         return self.userID

@@ -44,6 +44,7 @@ if settings.DEBUG:
     urlpatterns += [
       path('signup/', views.UserViewSet.signup, name='user-signup'),
       path('login/', views.UserViewSet.login_api, name='user-login'),
+      path('get_user_id/', views.UserViewSet.get_user_id, name='get-user-id'),
       path('roomcreate/',views.RoomViewSet.roomcreate, name='user-roomcreate')
     ]
     
