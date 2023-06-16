@@ -1,34 +1,112 @@
 import numpy as np
+"""
+import mysql.connector
 
-#방 정보를 받아올 클래스
+# MySQL 데이터베이스에 연결
+db_connection = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  password="yourpassword",
+  database="yourdatabase"
+)
+
+# 데이터베이스에서 방 정보 조회
+def get_room_data_from_db():
+    cursor = db_connection.cursor()
+    sql = "SELECT 방ID, 지역, 날짜, 장르, 난이도, 공포도, 활동성 FROM rooms"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    cursor.close()
+    return result
+"""
 class Room:
     def __init__(self, 방ID, 지역, 날짜, 장르, 난이도, 공포도, 활동성):
         self.방ID = 방ID
         self.지역 = 지역
         self.날짜 = 날짜
-        self.장르 = 장르
-        self.난이도 = 난이도
-        self.공포도 = 공포도
-        self.활동성 = 활동성
+        self.장르 = self.convert_genre(장르)
+        self.난이도 = self.convert_difficulty(난이도)
+        self.공포도 = self.convert_fear(공포도)
+        self.활동성 = self.convert_activity(활동성)
 
-#사용자 정보를 받아올 클래스
-class User:
-    def __init__(self, 지역, 날짜, 장르, difficulty=None, horror=None, activity=None):
-        self.지역 = 지역
-        self.장르 = 장르
-        self.difficulty = difficulty
-        self.horror = horror
-        self.activity = activity
+    def convert_genre(self, 장르):
+        symbol_mapping = {
+            'no matter': -1,
+            'Adventure': 0,
+            'Comedy': 1,
+            'Fantasy': 2,
+            'Romance': 3,
+            'Thriller': 4,
+            'Drama': 5,
+            'Horror': 6,
+            'Sci-fi': 7,
+            'Mystery': 8,
+            'Action': 9
+        }
+        return symbol_mapping.get(장르, 0)
 
-room_datum = [
-    Room('room1','강남', '2023/06/12', 'Adevnture', '상', '중', '하'),
-    Room('room2','건대', '2023/06/20', 'Comedy', '중', '중', '하'),
-    Room('room3','대구', '2023/06/18', 'Thriller', '상', '하', '중'),
-    Room('room4','신촌', '2023/06/18', 'Thriller', '상', '하', '중'),
-    Room('room5','홍대', '2023/06/11', 'Thriller', '상', '하', '중')
+    def convert_difficulty(self, 난이도):
+        if 난이도 == '상':
+            return 3
+        elif 난이도 == '중':
+            return 2
+        elif 난이도 == '하':
+            return 1
+        else:
+            return 0
+
+    def convert_fear(self, 공포도):
+        if 공포도 == '상':
+            return 3
+        elif 공포도 == '중':
+            return 2
+        elif 공포도 == '하':
+            return 1
+        else:
+            return 0
+
+    def convert_activity(self, 활동성):
+        if 활동성 == '상':
+            return 3
+        elif 활동성 == '중':
+            return 2
+        elif 활동성 == '하':
+            return 1
+        else:
+            return 0
+
+#데이터베이스에서 조회된 결과를 사용하여 Room 객체 생성
+def create_room_object(room_data):
+    rooms = []  #rooms=[Room1, Room2, Room3,]
+    for data in room_data:
+        방ID, 지역, 날짜, 장르, 난이도, 공포도, 활동성 = data
+        room = Room(방ID, 지역, 날짜, 장르, 난이도, 공포도, 활동성)
+        rooms.append(room)
+    return rooms
+
+# 데이터베이스에서 방 정보 조회
+# room_data = get_room_data_from_db()
+# 일단 임시 데이터
+room_data = [
+    ('room1','강남', '2023/06/12', 'Adevnture', '상', '중', '하'),
+    ('room2','건대', '2023/06/20', 'Comedy', '중', '중', '하'),
+    ('room3','대구', '2023/06/18', 'Thriller', '상', '하', '중'),
+    ('room4','신촌', '2023/06/18', 'Thriller', '상', '하', '중'),
+    ('room5','홍대', '2023/06/11', 'Thriller', '상', '하', '중')
     # 추가적인 방 데이터를 필요한 만큼 추가할 수 있습니다.
 ]
 
+# Room 객체로 변환
+rooms = create_room_object(room_data)
+
+# rooms를 사용하여 작업 수행
+for room in rooms:
+    print(room.방ID, room.지역, room.날짜, room.장르, room.난이도, room.공포도, room.활동성)
+
+# 데이터베이스 연결 종료
+#db_connection.close()
+
+"""
 user_option={
     'area1': '홍대',
     'area2': '강남',
@@ -330,3 +408,4 @@ print(sorted_diff_similarity)
 print( )
 for i in sorted_diff_similarity :
     print('room'+str(i+1))
+"""
