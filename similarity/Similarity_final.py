@@ -106,7 +106,6 @@ for room in rooms:
 # 데이터베이스 연결 종료
 #db_connection.close()
 
-"""
 user_option={
     'area1': '홍대',
     'area2': '강남',
@@ -121,6 +120,28 @@ user_option={
 user_option['startdate'] = int(user_option['startdate'].replace('/', ''))
 user_option['enddate'] = int(user_option['enddate'].replace('/', ''))
 
+genre_mapping = {
+    'no matter': -1,
+    'Adventure': 0,
+    'Comedy': 1,
+    'Fantasy': 2,
+    'Romance': 3,
+    'Thriller': 4,
+    'Drama': 5,
+    'Horror': 6,
+    'Sci-fi': 7,
+    'Mystery': 8,
+    'Action': 9
+}
+
+user_option['genre'] = genre_mapping.get(user_option['genre'], 0)
+user_option['diff'] = 3 if user_option['diff'] == '상' else (2 if user_option['diff'] == '중' else (1 if user_option['diff'] == '하' else 0))
+user_option['fear'] = 3 if user_option['fear'] == '상' else (2 if user_option['fear'] == '중' else (1 if user_option['fear'] == '하' else 0))
+user_option['activity'] = 3 if user_option['activity'] == '상' else (2 if user_option['activity'] == '중' else (1 if user_option['activity'] == '하' else 0))
+
+print(user_option)
+
+"""
 for room in room_datum:
     room.날짜 = int(room.날짜.replace('/', '')) 
 
