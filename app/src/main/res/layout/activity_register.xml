@@ -71,16 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"/>
-        <Button
-            android:id="@+id/submit_btn"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:background="@drawable/button_rec_blu"
-            android:text="중복 확인"
-            android:textColor="@color/realwhite"
-            android:fontFamily="@font/pretendard"
-            android:textSize="14dp"
-            android:textStyle="bold"/>
+
     </LinearLayout>
 
     <FrameLayout
@@ -92,7 +83,7 @@
         android:background="@drawable/edittext_stroke_gray">
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/signup_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"

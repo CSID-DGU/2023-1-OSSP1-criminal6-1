@@ -1,5 +1,6 @@
 
 import com.example.testapplication.BuildConfig
+import com.example.testapplication.service.SignService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -18,7 +19,7 @@ object ApiFactory {
 }
 
 object CriminalServicePool {
-
+    val signupService = ApiFactory.create<SignService>()
 }
 
 
