@@ -13,10 +13,58 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
 from django.contrib.sessions.models import Session
+import numpy as np
 
 
 # from django.contrib.auth import authenticate
 #확인
+
+
+#수치로의 변환 함수들 
+def convert_genre(장르):
+    symbol_mapping = {
+        'Adventure': 0,
+        'Comedy': 1,
+        'Fantasy': 2,
+        'Romance': 3,
+        'Thriller': 4,
+        'Drama': 5,
+        'Horror': 6,
+        'Sci-fi': 7,
+        'Mystery': 8,
+        'Action': 9
+    }
+    return symbol_mapping.get(장르, -1)
+
+def convert_difficulty(난이도):
+    if 난이도 == '상':
+        return 3
+    elif 난이도 == '중':
+        return 2
+    elif 난이도 == '하':
+        return 1
+    else:
+        return 0
+
+def convert_fear(공포도):
+    if 공포도 == '상':
+        return 3
+    elif 공포도 == '중':
+        return 2
+    elif 공포도 == '하':
+        return 1
+    else:
+        return 0
+
+def convert_activity(활동성):
+    if 활동성 == '상':
+        return 3
+    elif 활동성 == '중':
+        return 2
+    elif 활동성 == '하':
+        return 1
+    else:
+        return 0 
 
 #ModelViewSet은 기본적으로 CRUD를 제공함. 
 class RoomViewSet(viewsets.ModelViewSet):
@@ -34,7 +82,7 @@ class RoomViewSet(viewsets.ModelViewSet):
         fear = request.data.get('fear')
         activity = request.data.get('activity')
         
-        if date and region and title and roomIntro and genre and difficulty and fear and activity:
+        if date and region and title and roomIntro and difficulty and fear and activity:
             
             room_count = Room.objects.count()
             room = Room.objects.create(
@@ -44,9 +92,9 @@ class RoomViewSet(viewsets.ModelViewSet):
                 title=title,
                 roomIntro=roomIntro,
                 genre=genre,
-                difficulty=difficulty,
-                fear=fear,
-                activity=activity
+                difficulty=convert_difficulty(difficulty),
+                fear=convert_fear(fear),
+                activity=convert_activity(activity)  
             )
 
             user_id = request.session.get('user_id')
@@ -71,37 +119,274 @@ class RoomViewSet(viewsets.ModelViewSet):
         else:
             return Response({'error': 'Missing required fields'}, status=status.HTTP_400_BAD_REQUEST)
     
-    @api_view(['POST'])
-    def roomsearch(request):
-        area1 = request.data.get('area1')
-        area2 = request.data.get('area2')
-        area3 = request.data.get('area3')
-        startdate = request.data.get('startdate')
-        enddate = request.data.get('enddate')
-        genre = request.data.get('genre')
-        difficulty = request.data.get('difficulty')
-        fear = request.data.get('fear')
-        activity = request.data.get('activity')
+@api_view(['POST'])
+def roomsearch(request):
+    user_option = {
+    'area1': request.data.get('area1'),
+    'area2': request.data.get('area2'),
+    'startdate': request.data.get('startdate'),
+    'enddate': request.data.get('enddate'),
+    'genre': request.data.get('genre'),
+    'difficulty': request.data.get('difficulty'),
+    'fear': request.data.get('fear'),
+    'activity': request.data.get('activity')
+    }
+    
+    user_option['startdate'] = int(user_option['startdate'].replace('/', ''))
+    user_option['enddate'] = int(user_option['enddate'].replace('/', ''))
 
-        if area1 and area2 and area3 and startdate and enddate and genre and difficulty and fear and activity:
-            # 필요한 정보를 사용하여 방을 검색 정보를 리스트에 저장
-            room_data = [
-                {
-                'area1': area1,
-                'area2': area2,
-                'area3': area3,
-                'startdate': startdate,
-                'enddate': enddate,
-                'genre': genre,
-                'difficulty': difficulty,
-                'fear': fear,
-                'activity': activity
-                }
-            ]
-            #return Response(room_data, status=status.HTTP_200_OK)
-            return Response({'room_data': room_data}, status=status.HTTP_200_OK)
-        else:
-            return Response({'error': 'Missing required fields'}, status=status.HTTP_400_BAD_REQUEST)
+    genre_mapping = {
+        'Adventure': 0,
+        'Comedy': 1,
+        'Fantasy': 2,
+        'Romance': 3,
+        'Thriller': 4,
+        'Drama': 5,
+        'Horror': 6,
+        'Sci-fi': 7,
+        'Mystery': 8,
+        'Action': 9
+    }
+
+    user_option['genre'] = genre_mapping.get(user_option['genre'], -1)
+
+    #난이도 값 치환
+    if user_option['difficulty'] == '상':
+        user_option['difficulty'] = 3
+    elif user_option['difficulty'] == '중':
+        user_option['difficulty'] = 2
+    elif user_option['difficulty'] == '하':
+        user_option['difficulty'] = 1
+    else:
+        user_option['difficulty'] = None
+    #공포도 값 치환
+    if user_option['fear'] == '상':
+        user_option['fear'] = 3
+    elif user_option['fear'] == '중':
+        user_option['fear'] = 2
+    elif user_option['fear'] == '하':
+        user_option['fear'] = 1
+    else:
+        user_option['fear'] = None
+    #활동성 값 치환
+    if user_option['activity'] == '상':
+        user_option['activity'] = 3
+    elif user_option['activity'] == '중':
+        user_option['activity'] = 2
+    elif user_option['activity'] == '하':
+        user_option['activity'] = 1
+    else:
+        user_option['activity'] = None
+        
+    for room in rooms:
+        room.날짜 = int(room.날짜.replace('/', '')) 
+        
+    rooms = Room.objects.all()
+    
+    filtered_rooms = []
+    #filtered_rooms가 장르랑 난,공,활 유사도 측정해야햐는 방들
+
+    for room in rooms:
+        for i in range(1, 4):
+            if room.지역 == user_option[f'area{i}']:
+                if room.날짜 >= user_option['startdate'] and room.날짜 <= user_option['enddate']:
+                    filtered_rooms.append(room)
+                break  # 일치하는 경우를 찾았으므로 루프를 종료합니다.
+    
+    filtered_genre_similarity = []
+
+    genre_similarity=[[1,0,0.6604,0,0,0,0,0.5007,0,0.7116],
+    [0,1,0,0.3459,0,0,0,0,0,0],
+    [0.6604,0,1,0,0,0,0.042,0.1507,0.0503,0.1823],
+    [0,0.3459,0,1,0,0.2879,0,0,0,0],
+    [0,0,0,0,1,0,0.6037,0.2711,0.7465,0.4714],
+    [0,0,0,0.288,0,1,0,0,0.0855,0],
+    [0,0,0.042,0,0.6037,0,1,0.365,0.3394,0],
+    [0.5007,0,0.1507,0,0.2711,0,0.365,1,0.0564,0.6076],
+    [0,0,0.0503,0,0.7465,0.0855,0.3394,0.0564,1,0],
+    [0.7116,0,0.1823,0,0.4714,0,0,0.6076,0,1]
+    ]
+
+    if user_option['genre'] == -1:
+        for room in filtered_rooms:
+            new_array = [room.방ID, 0]
+            filtered_genre_similarity.append(new_array)
+    else:
+        for room in filtered_rooms:
+            column_index = room.장르
+            similarity_value = genre_similarity[user_option['genre']][column_index]
+            new_array = [room.방ID, similarity_value]
+            filtered_genre_similarity.append(new_array)
+            
+    #null값인 property 구별용 변수
+    diff_null=0
+    horr_null=0
+    acti_null=0
+
+    #어떤 property가 null값인지 구별
+    if user_option.get('difficulty') is None:
+        diff_null=1
+    if user_option.get('fear') is None:
+        horr_null=1
+    if user_option.get('activity') is None:
+        acti_null=1
+    count = diff_null+horr_null+acti_null
+    print("확인용 출력: ", diff_null, horr_null, acti_null)
+    
+
+    property_similarity=[]
+
+        #null값인 property가 몇개인지 검사
+
+    if count==0: #null값이 하나도 없을때
+
+        #rooms배열에서 각 행마다 반복 -> 난공활 정보 가져오기
+        for room in filtered_rooms:  
+            room_diff = room.난이도
+            room_horr = room.공포도
+            room_acti = room.활동성
+
+            #np용 배열로 저장            
+            room_vector = np.array([room_diff, room_horr, room_acti])
+            user_vector = np.array([user_option['difficulty'], user_option['fear'], user_option['activity']])
+
+            #유클리드 거리 계산
+            euclidean_distance = np.linalg.norm(room_vector - user_vector)
+            similarity = 1 / (1 + euclidean_distance)
+            new_array = [room.방ID, similarity]
+            #방1개에 대한 최종 유사도는 배열로 저장해준다
+            property_similarity.append(new_array)
+            print(property_similarity)
+
+    elif count==1: #null값이 하나만 있을 때
+        if diff_null==1: #null값이 난이도일때
+            for room in filtered_rooms:
+                room_horr = room.공포도
+                room_acti = room.활동성
+
+                #np용 배열로 저장
+                room_vector = np.array([room_horr, room_acti])
+                user_vector = np.array([user_option['fear'], user_option['activity']])
+
+                #유클리드 거리 계산
+                euclidean_distance = np.linalg.norm(room_vector - user_vector)
+                similarity = 1 / (1 + euclidean_distance)
+                new_array = [room.방ID, similarity]
+                #방1개에 대한 최종 유사도는 배열로 저장해준다
+                property_similarity.append(new_array)
+                print(property_similarity)
+        elif horr_null==1: #null값이 공포도일때
+            for room in filtered_rooms:
+                room_diff = room.난이도
+                room_acti = room.활동성
+
+                #np용 배열로 저장
+                room_vector = np.array([room_diff, room_acti])
+                user_vector = np.array([user_option['difficulty'], user_option['activity']])
+
+                #유클리드 거리 계산
+                euclidean_distance = np.linalg.norm(room_vector - user_vector)
+                similarity = 1 / (1 + euclidean_distance)
+                new_array = [room.방ID, similarity]
+                #방1개에 대한 최종 유사도는 배열로 저장해준다
+                property_similarity.append(new_array)
+                print(property_similarity)
+        elif acti_null==1:
+            for room in filtered_rooms:
+                room_diff = room.난이도
+                room_horr = room.공포도
+
+                #np용 배열로 저장
+                room_vector = np.array([room_diff, room_horr])
+                user_vector = np.array([user_option['difficulty'], user_option['fear']])
+
+                #유클리드 거리 계산
+                euclidean_distance = np.linalg.norm(room_vector - user_vector)
+                similarity = 1 / (1 + euclidean_distance)
+                new_array = [room.방ID, similarity]
+                #방1개마다 최종 유사도는 배열로 저장해준다
+                property_similarity.append(new_array)
+                print(property_similarity)
+
+    elif count==2: #null값이 2개일때
+        if diff_null==1 and horr_null==1: #활동성 값만 계산해주면 될때
+            for room in filtered_rooms:
+                room_acti = room.활동성
+
+                #np용 배열로 저장
+                room_vector = np.array([room_acti])
+                user_vector = np.array([user_option['activity']])
+
+                #유클리드 거리 계산
+                euclidean_distance = np.linalg.norm(room_vector - user_vector)
+                similarity = 1 / (1 + euclidean_distance)
+                new_array = [room.방ID, similarity]
+                #방1개마다 대한 최종 유사도는 배열로 저장해준다
+                property_similarity.append(new_array)
+                print(property_similarity)
+        elif diff_null==1 and acti_null==1: #공포도 값만 계산해주면 될때
+            for room in filtered_rooms:
+                room_horr = room.공포도
+
+                #np용 배열로 저장
+                room_vector = np.array([room_horr])
+                user_vector = np.array([user_option.horror])
+
+                #유클리드 거리 계산
+                euclidean_distance = np.linalg.norm(room_vector - user_vector)
+                similarity = 1 / (1 + euclidean_distance)
+                new_array = [room[0], similarity]
+                #방1개마다 대한 최종 유사도는 배열로 저장해준다
+                property_similarity.append(new_array)
+                print(property_similarity)
+        elif horr_null==1 and acti_null==1: #난이도 값만 계산해주면 될때
+            for room in filtered_rooms:
+                room_diff = room.난이도
+
+                #np용 배열로 저장
+                room_vector = np.array([room_diff])
+                user_vector = np.array([user_option['difficulty']])
+
+                #유클리드 거리 계산
+                euclidean_distance = np.linalg.norm(room_vector - user_vector)
+                similarity = 1 / (1 + euclidean_distance)
+                new_array = [room.방ID, similarity]
+                #방1개마다 대한 최종 유사도는 배열로 저장해준다
+                property_similarity.append(new_array)
+                print(property_similarity)
+
+    elif count==3:
+        for room in filtered_rooms:
+            new_array = [room.방ID, 0]
+            property_similarity.append(new_array)
+            
+    if all(value == 0 for _, value in filtered_genre_similarity) and count == 3:
+        random_room = random.sample(rooms, 3)
+        print("랜덤으로 추천드리는 방입니다: ")
+        for room in random_room:
+            print(room.방ID, room.지역, room.날짜, room.장르, room.난이도, room.공포도, room.활동성)
+    else :    
+    # filtered_genre_similarity와 property_similarity에서 방 ID와 유사도 값을 가져옴
+        room_IDs = [item[0] for item in filtered_genre_similarity]
+        genre_values = np.array([item[1] for item in filtered_genre_similarity])
+        property_values = np.array([item[1] for item in property_similarity])
+        print(len(genre_values))
+        print(len(property_values))
+
+    # 방 ID별로 유사도 값들을 합산
+        sum_similarity = genre_values + property_values
+
+    # 유사도 값들의 표준 편차 계산
+        total_similarity = np.concatenate((genre_values, property_values))
+        total_similarity = np.reshape(total_similarity, (2, len(room_IDs)))
+        total_similarity_std = total_similarity.std(axis=0)
+
+    # 유사도 값들의 합에서 표준 편차를 뺀 결과를 2차원 배열로 저장
+        modified_values = np.column_stack((room_IDs, sum_similarity - total_similarity_std))
+
+    # modified_values를 크기순으로 정렬하여 상위 3개 방 추천
+        recommended_rooms = modified_values[np.argsort(modified_values[:, 1])[::-1]][:3]
+
     
     @api_view(['GET'])
     def getroomlist(request):
