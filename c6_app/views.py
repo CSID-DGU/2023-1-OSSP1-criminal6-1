@@ -9,15 +9,14 @@ from rest_framework.decorators import api_view
 from django.http.response import HttpResponse
 from rest_framework.response import Response
 from django.contrib import auth
-<<<<<<< Updated upstream
+
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
 from django.contrib.sessions.models import Session
-=======
-# from django.contrib.auth.models import AppUser
-from django.contrib.auth import authenticate
->>>>>>> Stashed changes
 
+
+# from django.contrib.auth import authenticate
+#확인
 
 #ModelViewSet은 기본적으로 CRUD를 제공함. 
 class RoomViewSet(viewsets.ModelViewSet):
@@ -89,7 +88,7 @@ class UserViewSet(viewsets.ModelViewSet):
                 user = AppUser.objects.create(id=id, password=password, name = name)
                 return Response({'success': 'True'}, status=status.HTTP_201_CREATED)
         else:
-            return Response({'success:False'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': 'False'}, status=status.HTTP_400_BAD_REQUEST)
     
     
     #로그인 시 호출되는 함수 

@@ -95,17 +95,16 @@ DATABASES = {
     #     "ENGINE": "django.db.backends.sqlite3",
     #     "NAME": BASE_DIR / "db.sqlite3",
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'oss-db',
-        # 'USER': 'master',
-        # 'PASSWORD':'ossdb4692',
-        # 'HOST': 'oss-db.ccvk2kor8flo.ap-northeast-2.rds.amazonaws.com',
-        # 'PORT':'3306',
-        # 'OPTIONS':{
-        #     'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
-        # }
+        
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'oss-db',
+        'USER': 'master',
+        'PASSWORD':'ossdb4692',
+        'HOST': 'oss-db.ccvk2kor8flo.ap-northeast-2.rds.amazonaws.com',
+        'PORT':'3306',
+        'OPTIONS':{
+            'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
 
     }
 }
@@ -155,3 +154,10 @@ STATIC_URL = "static/"
 # DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+
+#실시간 채팅을 위한 추가
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
