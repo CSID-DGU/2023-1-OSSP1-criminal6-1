@@ -68,13 +68,15 @@ class SignupActivity : AppCompatActivity() {
                             call: Call<signupresponse>,
                             response: retrofit2.Response<signupresponse>
                         ) {
-                            //Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
-                            Toast.makeText(applicationContext, "회원가입 성공", Toast.LENGTH_SHORT).show()
-                            finish()
+
+                                Toast.makeText(applicationContext, "회원가입 성공", Toast.LENGTH_SHORT)
+                                    .show()
+                                finish()
+
                         }
 
                         override fun onFailure(call: Call<signupresponse>, t: Throwable) {
-                            //Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
                             Log.d("signupfail", t.toString())
                         }
 

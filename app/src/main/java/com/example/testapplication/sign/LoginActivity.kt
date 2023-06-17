@@ -1,29 +1,31 @@
 package com.example.testapplication.sign
 
+import CriminalServicePool
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testapplication.MainActivity
-import com.example.testapplication.UserSigninModel
 import com.example.testapplication.databinding.ActivityLoginBinding
-import com.example.testapplication.service.APIS
+import com.example.testapplication.model.request.loginrequest
+import com.example.testapplication.model.response.loginresponse
+import com.example.testapplication.model.response.signupresponse
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private val LoginService = CriminalServicePool.loginService
 
-    private val api = APIS.create()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val preferences = getSharedPreferences("userInfo", MODE_PRIVATE)
 
         val ID = binding.loginID
         val Password = binding.loginPassword
@@ -35,36 +37,29 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginBtn.setOnClickListener {
             if (ID.text.isNotEmpty() && Password.text.isNotEmpty()) {
-                api.signin(
+                LoginService.signin(
+                    loginrequest(
                     ID.text.toString(),
                     Password.text.toString()
-                ).enqueue(object : retrofit2.Callback<UserSigninModel> {
+                    )
+                ).enqueue(object : Callback<loginresponse> {
                     override fun onResponse(
-                        call: Call<UserSigninModel>,
-                        response: Response<UserSigninModel>
+                        call: Call<loginresponse>,
+                        response: Response<loginresponse>
                     ) {
-                        if (response.body()?.result.toString().equals("success")) {
-                            val editor = preferences!!.edit()
-                            editor.putString("userId", ID.text.toString())
-                            editor.putString("userPw", Password.text.toString())
-                            Log.d("LoginId", preferences.getString("userId", "").toString())
-                            editor.apply()
-
-                            Log.d("loginsuccess", "${response.body()}")
-                            Toast.makeText(applicationContext, "로그인 성공!", Toast.LENGTH_SHORT).show()
+                        if (response.isSuccessful) {
+                            Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
                             val intent = Intent(applicationContext, MainActivity::class.java)
                             startActivity(intent)
-                        } else {
-                            Toast.makeText(
-                                applicationContext,
-                                response.body()?.result.toString(),
-                                Toast.LENGTH_SHORT
-                            ).show()
+                        }
+                        else {
+                            Log.d("ffffff", response.body()?.success.toString())
+                            Toast.makeText(applicationContext, "아이디 혹은 비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
-                    override fun onFailure(call: Call<UserSigninModel>, t: Throwable) {
-                        Log.d("loginfail", "asdf")
+                    override fun onFailure(call: Call<loginresponse>, t: Throwable) {
+                        Toast.makeText(applicationContext, "서버통신 실패", Toast.LENGTH_SHORT).show()
                     }
 
                 })

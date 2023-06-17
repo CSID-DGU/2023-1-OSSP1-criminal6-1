@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class signupresponse(
+data class loginresponse(
     @SerialName("success")
     val success: Boolean,
 )
