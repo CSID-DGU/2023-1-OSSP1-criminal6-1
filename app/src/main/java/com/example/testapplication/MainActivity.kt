@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         binding1 = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding1.root)
 
+        val userid = intent.getStringExtra("userid")
+
         if (frame == null) {
             supportFragmentManager.beginTransaction()
                 .add(frame.id, ChatFragment())

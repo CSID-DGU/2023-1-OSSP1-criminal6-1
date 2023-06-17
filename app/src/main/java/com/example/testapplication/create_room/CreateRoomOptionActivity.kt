@@ -47,8 +47,6 @@ class CreateRoomOptionActivity : AppCompatActivity() {
                     // "장르 선택" 항목이 선택된 경우
                     genre = "" // 빈 문자열로 초기화
                 } else {
-                    //position은 선택한 아이템의 위치를 넘겨주는 인자입니다.
-                    //mBinding.text = sData.get(position)
                     genre = sData.get(position)
                 }
                 Log.d("장르:", sData.get(position))
@@ -58,12 +56,6 @@ class CreateRoomOptionActivity : AppCompatActivity() {
 
             }
         }
-//        val btnDifficultyHigh =Binding.difficultyHigh
-//        val btnDifficultyMiddle =Binding.difficultyMiddle
-//        val btnDifficultyLow =Binding.difficultyLow
-//        val btnScaryHigh =Binding.scaryHigh
-//        val btnScaryMiddle =Binding.scaryMiddle
-//        val btnScaryLow =Binding.scaryLow
 
         //난이도 선택 버튼
         Binding.difficultyHigh.setOnClickListener {
@@ -176,7 +168,7 @@ class CreateRoomOptionActivity : AppCompatActivity() {
                 intent.putExtra("activity", activity)
                 startActivity(intent)
                 finish()
-            }else {
+            } else {
                 // genre를 선택하지 않았을 경우에 대한 처리
                 // 예를 들어, Toast 메시지를 표시하여 사용자에게 선택하도록 안내할 수 있습니다.
                 Toast.makeText(this, "장르를 선택해주세요.", Toast.LENGTH_SHORT).show()
@@ -193,39 +185,5 @@ class CreateRoomOptionActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-//        binding.btnPrev.setOnClickListener{
-//            val intent= Intent(this, CreateRoomOptionActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//        var fragN : Int = 0
-//        setFrag(0)
-//
-//        binding.btnNext.setOnClickListener{
-//            if(fragN<1) {
-//                fragN += 1
-//                setFrag(fragN)
-//            }
-//        }
-//        binding.btnPast.setOnClickListener{
-//            if(fragN>0) {
-//                fragN -= 1
-//                setFrag(fragN)
-//            }
-//        }
     }
-
-
-//    private fun setFrag(fragNum : Int) {
-//        val ft = supportFragmentManager.beginTransaction()
-//        when(fragNum)
-//        {
-//            0->{
-//                ft.replace(R.id.frame_createroom, FragmentSelectLocal()).commit()
-//            }
-//            1->{
-//                ft.replace(R.id.frame_createroom, FragmentSelectOption()).commit()
-//            }
-//        }
-//    }
 }

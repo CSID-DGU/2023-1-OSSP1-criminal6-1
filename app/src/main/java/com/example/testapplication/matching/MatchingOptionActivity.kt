@@ -32,7 +32,6 @@ class MatchingOptionActivity : AppCompatActivity() {
         val area3 = intent.getStringExtra("area3")
 
         //스피너 어댑터
-        //var sData = resources.getStringArray(R.array.testarray)
         var sData = listOf(
             "장르 선택", "판타지", "19금", "SF", "감성", "공포", "기타", "모험", "미션", "스토리",
             "추리", "코믹"
@@ -64,12 +63,6 @@ class MatchingOptionActivity : AppCompatActivity() {
 
             }
         }
-//        val btnDifficultyHigh =Binding.difficultyHigh
-//        val btnDifficultyMiddle =Binding.difficultyMiddle
-//        val btnDifficultyLow =Binding.difficultyLow
-//        val btnScaryHigh =Binding.scaryHigh
-//        val btnScaryMiddle =Binding.scaryMiddle
-//        val btnScaryLow =Binding.scaryLow
 
         //난이도 선택 버튼
         Binding.difficultyHigh.setOnClickListener {
@@ -205,34 +198,6 @@ class MatchingOptionActivity : AppCompatActivity() {
             finish()
         }
 
-//        var fragN : Int = 0
-//        setFrag(0)
-//
-//        binding.btnNext.setOnClickListener{
-//            if(fragN<1) {
-//                fragN += 1
-//                setFrag(fragN)
-//            }
-//        }
-//        binding.btnPast.setOnClickListener{
-//            if(fragN>0) {
-//                fragN -= 1
-//                setFrag(fragN)
-//            }
-//        }
     }
 
-
-//    private fun setFrag(fragNum : Int) {
-//        val ft = supportFragmentManager.beginTransaction()
-//        when(fragNum)
-//        {
-//            0->{
-//                ft.replace(R.id.frame_createroom, FragmentSelectLocal()).commit()
-//            }
-//            1->{
-//                ft.replace(R.id.frame_createroom, FragmentSelectOption()).commit()
-//            }
-//        }
-//    }
 }

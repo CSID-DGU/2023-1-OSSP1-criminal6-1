@@ -1,6 +1,7 @@
 package com.example.testapplication.sign
 
 import CriminalServicePool
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +11,6 @@ import com.example.testapplication.MainActivity
 import com.example.testapplication.databinding.ActivityLoginBinding
 import com.example.testapplication.model.request.loginrequest
 import com.example.testapplication.model.response.loginresponse
-import com.example.testapplication.model.response.signupresponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,6 +49,14 @@ class LoginActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+                            val userid = response.body()?.user_id
+
+                            val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                            val editor = sharedPreferences.edit()
+                            editor.putString("userid", userid)
+                            editor.apply()
+
+
                             val intent = Intent(applicationContext, MainActivity::class.java)
                             startActivity(intent)
                         }

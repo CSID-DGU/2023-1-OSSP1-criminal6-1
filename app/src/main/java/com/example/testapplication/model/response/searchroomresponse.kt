@@ -4,8 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class loginresponse(
+data class searchroomresponse(
     @SerialName("success")
     val success: Boolean,
-    val user_id : String
 )
