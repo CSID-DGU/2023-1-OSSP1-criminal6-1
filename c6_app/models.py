@@ -29,7 +29,7 @@ class AppUser(models.Model):
     id = models.CharField(max_length = 45, unique = True)
     password = models.CharField(max_length = 45)
     name = models.CharField(max_length = 45, default = '')
-    roomID = models.ForeignKey(Room, on_delete=models.CASCADE,null=True, related_name='users')
+    roomID = models.CharField(max_length = 1000, default = '')
     
     def __str__(self):
         return self.name

@@ -35,6 +35,8 @@ class RoomViewSet(viewsets.ModelViewSet):
         activity = request.data.get('activity')
         
         if date and region and title and roomIntro and genre and difficulty and fear and activity:
+            
+            room_count = Room.objects.count()
             room = Room.objects.create(
                 
                 date=date,
@@ -50,9 +52,17 @@ class RoomViewSet(viewsets.ModelViewSet):
             user_id = request.session.get('user_id')
             if user_id:
                 try:
-                    user = AppUser.objects.get(id=user_id)
-                    user.roomID = room
-                    user.save()
+                    room_creator = AppUser.objects.get(id=user_id)
+                    room_index = room.roomID  # 방의 인덱스를 가져옴 (0부터 시작)
+                    users = AppUser.objects.all()
+                    for user in users:
+                        roomID = user.roomID  # 사용자의 roomID 가져오기
+                        if user == room_creator:  # 방을 만든 사용자인 경우
+                            roomID = roomID[:room_index] + '1'  # 해당 위치에 1을 추가
+                        else:  # 방을 만든 사용자가 아닌 경우
+                            roomID = roomID[:room_index] + '0' # 해당 위치에 0을 추가
+                        user.roomID = roomID  # 사용자의 roomID를 업데이트
+                        user.save()
                     return Response({'success': 'Room created successfully'}, status=status.HTTP_201_CREATED)
                 except AppUser.DoesNotExist:
                     return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
@@ -86,6 +96,10 @@ class UserViewSet(viewsets.ModelViewSet):
             except AppUser.DoesNotExist:
                 # Create a new user
                 user = AppUser.objects.create(id=id, password=password, name = name)
+                room_count = Room.objects.count()
+                roomID = '0' * room_count
+                user.roomID = roomID
+                user.save()
                 return Response({'success': 'True'}, status=status.HTTP_201_CREATED)
         else:
             return Response({'success': 'False'}, status=status.HTTP_400_BAD_REQUEST)
