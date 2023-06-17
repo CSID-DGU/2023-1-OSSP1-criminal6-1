@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     "c6_app",
     "rest_framework",
     'drf_yasg',
-
-    
+    #실시간 채팅을 위한 세팅
+    'channels'
     
 ]
 
