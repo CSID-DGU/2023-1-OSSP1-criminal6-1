@@ -45,6 +45,9 @@ if settings.DEBUG:
       path('signup/', views.UserViewSet.signup, name='user-signup'),
       path('login/', views.UserViewSet.login_api, name='user-login'),
       path('get_user_id/', views.UserViewSet.get_user_id, name='get-user-id'),
-      path('roomcreate/',views.RoomViewSet.roomcreate, name='user-roomcreate')
+      path('roomcreate/',views.RoomViewSet.roomcreate, name='user-roomcreate'),
+      path('roomsearch/',views.RoomViewSet.roomsearch, name='roomsearch'),
+      path('getroomlist/',views.RoomViewSet.getroomlist, name='getroomlist'),
+      path('enterroomlist/',views.RoomViewSet.enterroomlist, name='enterroomlist')
     ]
     

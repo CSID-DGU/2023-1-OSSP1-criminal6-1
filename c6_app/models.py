@@ -12,7 +12,7 @@ class Room(models.Model):
     roomID = models.AutoField(primary_key = True)
     title = models.CharField(max_length = 45, default = '')
     roomIntro = models.TextField(max_length = 200, null=True)
-    date = models.DateField(max_length = 45)
+    date = models.CharField(max_length = 45)
     region = models.CharField(max_length = 45, default = '')
     genre = models.CharField(max_length = 45)
     difficulty = models.FloatField(default = 0)
