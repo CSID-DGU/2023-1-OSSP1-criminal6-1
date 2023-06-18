@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/items"
-    android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:background="@drawable/stroke_bottom_gray">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="data"-->
-<!--            type="" />-->
-<!--    </data>-->
+    <data>
+        <variable
+            name="roomdata"
+            type="com.example.testapplication.model.response.getroomlistresponse.Data" />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="parent"
-    android:orientation="vertical"
-    app:layout_constraintStart_toStartOf="parent">
-    <TextView
-        android:id="@+id/room_name"
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/items"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="10dp"
-        android:text="타이틀"
-        android:textColor="@color/text_main"
-        android:textSize="20sp"
-        android:fontFamily="@font/pretendard_bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="90dp"
+        android:background="@drawable/stroke_bottom_gray">
 
-    <TextView
-        android:id="@+id/room_description"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:text="설명"
-        android:fontFamily="@font/pretendard"
-        android:textColor="@color/gray_dark"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/room_name" />
+        <LinearLayout
+            android:id="@+id/roomlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-</LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/room_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:text="@{roomdata.title}"
+                android:textColor="@color/text_main"
+                android:textSize="20sp"
+                android:fontFamily="@font/pretendard_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/room_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:text="@{roomdata.roomIntro}"
+                android:fontFamily="@font/pretendard"
+                android:textColor="@color/gray_dark"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/room_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

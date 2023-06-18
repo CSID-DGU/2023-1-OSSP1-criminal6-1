@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/realwhite"
-    tools:context=".Recommend_list">
+    tools:context=".roomrecommend.Recommend_list">
 
     <androidx.appcompat.widget.Toolbar
         app:contentInsetStart="0dp"
