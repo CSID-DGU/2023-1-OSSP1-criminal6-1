@@ -9,8 +9,6 @@ data class getroomlistresponse(
     val `data`: List<Data>,
     @SerialName("success")
     val success: Boolean,
-    @SerialName("roomid")
-    val roomid: Int
 ) {
     @Serializable
     data class Data(

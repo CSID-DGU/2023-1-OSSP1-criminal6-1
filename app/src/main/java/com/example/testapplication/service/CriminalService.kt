@@ -1,9 +1,6 @@
 package com.example.testapplication.service
 
-import com.example.testapplication.model.request.creatroomrequest
-import com.example.testapplication.model.request.loginrequest
-import com.example.testapplication.model.request.searchroomrequest
-import com.example.testapplication.model.request.signuprequest
+import com.example.testapplication.model.request.*
 import com.example.testapplication.model.response.*
 import retrofit2.Call
 import retrofit2.http.Body
@@ -41,4 +38,11 @@ interface RoomlistService{
     @GET("getroomlist/")
     fun roomlist(
     ): Call<getroomlistresponse>
+}
+
+interface EnterRoomlistService{
+    @POST("enterroomlist/")
+    fun enterroom(
+        @Body request: enterroomrequest
+    ): Call<enterroomresponse>
 }

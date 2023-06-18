@@ -1,9 +1,6 @@
 
 import com.example.testapplication.BuildConfig
-import com.example.testapplication.service.CreateRoomService
-import com.example.testapplication.service.RoomlistService
-import com.example.testapplication.service.SearchRoomService
-import com.example.testapplication.service.SignService
+import com.example.testapplication.service.*
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -27,6 +24,7 @@ object CriminalServicePool {
     val createroomService = ApiFactory.create<CreateRoomService>()
     val searchroomService = ApiFactory.create<SearchRoomService>()
     val roomlistService = ApiFactory.create<RoomlistService>()
+    val enterroomService = ApiFactory.create<EnterRoomlistService>()
 }
 
 
