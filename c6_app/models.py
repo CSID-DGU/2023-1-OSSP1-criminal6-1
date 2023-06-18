@@ -14,18 +14,18 @@ class Room(models.Model):
     roomIntro = models.TextField(max_length = 200, null=True)
     date = models.CharField(max_length = 45)
     region = models.CharField(max_length = 45, default = '')
-    genre = models.CharField(max_length = 45)
+    genre = models.IntegerField(default = 0)
     difficulty = models.FloatField(default = 0)
     fear = models.FloatField(default = 0)
     activity = models.FloatField(default = 0) 
     #필드 정의 (방의 속성을 나타냄)
 
     def __str__(self):
-        return self.roomID
+        return str(self.roomID) 
     
 #AppUser 모델 정의 
 class AppUser(models.Model):
-    userID = models.IntegerField(primary_key = True)
+    userID = models.AutoField(primary_key = True)
     id = models.CharField(max_length = 45, unique = True)
     password = models.CharField(max_length = 45)
     name = models.CharField(max_length = 45, default = '')
