@@ -56,7 +56,6 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString("userid", userid)
                             editor.apply()
 
-
                             val intent = Intent(applicationContext, MainActivity::class.java)
                             startActivity(intent)
                         }

@@ -95,7 +95,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Recommend_list"
+            android:name=".roomrecommend.Recommend_list"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

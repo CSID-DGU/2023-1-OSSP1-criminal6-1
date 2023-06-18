@@ -7,14 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.testapplication.Recommend_list
+import com.example.testapplication.roomrecommend.Recommend_list
 import com.example.testapplication.databinding.ActivityMatchingTotalBinding
-import com.example.testapplication.getAllRoomInfoModel
 import com.example.testapplication.model.request.searchroomrequest
 import com.example.testapplication.model.response.searchroomresponse
-import com.example.testapplication.service.APIS
-import com.google.gson.GsonBuilder
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,8 +22,6 @@ class MatchingTotalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMatchingTotalBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val intent = Intent(this, Recommend_list::class.java)
 
 
         val area1 = intent.getStringExtra("area1")
@@ -86,7 +80,7 @@ class MatchingTotalActivity : AppCompatActivity() {
                          if (response.isSuccessful){
                              Toast.makeText(applicationContext, "방 매칭을 시작합니다.", Toast.LENGTH_SHORT)
                                  .show()
-
+                             val intent = Intent(this@MatchingTotalActivity, Recommend_list::class.java)
                              startActivity(intent)
                              finish()
                          }

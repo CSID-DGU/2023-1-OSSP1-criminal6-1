@@ -1,6 +1,7 @@
 
 import com.example.testapplication.BuildConfig
 import com.example.testapplication.service.CreateRoomService
+import com.example.testapplication.service.RoomlistService
 import com.example.testapplication.service.SearchRoomService
 import com.example.testapplication.service.SignService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -25,6 +26,7 @@ object CriminalServicePool {
     val loginService = ApiFactory.create<SignService>()
     val createroomService = ApiFactory.create<CreateRoomService>()
     val searchroomService = ApiFactory.create<SearchRoomService>()
+    val roomlistService = ApiFactory.create<RoomlistService>()
 }
 
 

@@ -33,8 +33,7 @@ class MatchingOptionActivity : AppCompatActivity() {
 
         //스피너 어댑터
         var sData = listOf(
-            "장르 선택", "판타지", "19금", "SF", "감성", "공포", "기타", "모험", "미션", "스토리",
-            "추리", "코믹"
+            "장르 선택", "모험", "코믹", "판타지", "로맨스", "스릴러", "드라마", "호러", "공상과학", "미스테리", "액션"
         )
         var adapter = ArrayAdapter<String>(this, R.layout.simple_list_item_1, sData)
         val spinThema = Binding.spinnerThema

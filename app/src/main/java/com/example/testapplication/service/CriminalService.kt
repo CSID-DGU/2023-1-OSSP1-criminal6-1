@@ -4,12 +4,10 @@ import com.example.testapplication.model.request.creatroomrequest
 import com.example.testapplication.model.request.loginrequest
 import com.example.testapplication.model.request.searchroomrequest
 import com.example.testapplication.model.request.signuprequest
-import com.example.testapplication.model.response.createroomresponse
-import com.example.testapplication.model.response.loginresponse
-import com.example.testapplication.model.response.searchroomresponse
-import com.example.testapplication.model.response.signupresponse
+import com.example.testapplication.model.response.*
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface SignService {
@@ -37,4 +35,10 @@ interface SearchRoomService{
     fun roomsearch(
         @Body request: searchroomrequest
     ): Call<searchroomresponse>
+}
+
+interface RoomlistService{
+    @GET("getroomlist/")
+    fun roomlist(
+    ): Call<getroomlistresponse>
 }
