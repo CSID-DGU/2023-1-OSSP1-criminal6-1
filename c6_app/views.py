@@ -174,15 +174,15 @@ class RoomViewSet(viewsets.ModelViewSet):
             if user_id:
                 try:
                     room_creator = AppUser.objects.get(id=user_id)
-                    room_index = room.roomID              # 방의 인덱스를 가져옴 (0부터 시작)
+                    room_index = room.roomID              
                     users = AppUser.objects.all()
                     for user in users:
-                        roomID = user.roomID            # 사용자의 roomID 가져오기
-                        if user == room_creator:        # 방을 만든 사용자인 경우
-                            roomID = roomID[:room_index] + '1'  # 해당 위치에 1을 추가
-                        else:                           # 방을 만든 사용자가 아닌 경우
-                            roomID = roomID[:room_index] + '0' # 해당 위치에 0을 추가
-                        user.roomID = roomID            # 사용자의 roomID를 업데이트
+                        roomID = user.roomID            
+                        if user == room_creator:       
+                            roomID = roomID[:room_index] + '1' 
+                        else:                           
+                            roomID = roomID[:room_index] + '0' 
+                        user.roomID = roomID            
                         user.save()
                     return Response({'success': True}, status=status.HTTP_201_CREATED)
                 except AppUser.DoesNotExist:
@@ -222,6 +222,7 @@ class RoomViewSet(viewsets.ModelViewSet):
             '액션': 9
         }
 
+        user_option['genre'] = genre_mapping.get(user_option['genre'], -1)
         user_option['genre'] = genre_mapping.get(user_option['genre'], -1)
 
         #난이도 값 치환
@@ -313,7 +314,9 @@ class RoomViewSet(viewsets.ModelViewSet):
         property_similarity=[]
 
             #null값인 property가 몇개인지 검사
+            #null값인 property가 몇개인지 검사
 
+        if count==0: #null값이 하나도 없을때
         if count==0: #null값이 하나도 없을때
 
             #rooms배열에서 각 행마다 반복 -> 난공활 정보 가져오기
@@ -322,6 +325,9 @@ class RoomViewSet(viewsets.ModelViewSet):
                 room_horr = room.fear
                 room_acti = room.activity
 
+                #np용 배열로 저장            
+                room_vector = np.array([room_diff, room_horr, room_acti])
+                user_vector = np.array([user_option['difficulty'], user_option['fear'], user_option['activity']])
                 #np용 배열로 저장            
                 room_vector = np.array([room_diff, room_horr, room_acti])
                 user_vector = np.array([user_option['difficulty'], user_option['fear'], user_option['activity']])
@@ -343,6 +349,9 @@ class RoomViewSet(viewsets.ModelViewSet):
                     #np용 배열로 저장
                     room_vector = np.array([room_horr, room_acti])
                     user_vector = np.array([user_option['fear'], user_option['activity']])
+                    #np용 배열로 저장
+                    room_vector = np.array([room_horr, room_acti])
+                    user_vector = np.array([user_option['fear'], user_option['activity']])
 
                     #유클리드 거리 계산
                     euclidean_distance = np.linalg.norm(room_vector - user_vector)
@@ -359,6 +368,9 @@ class RoomViewSet(viewsets.ModelViewSet):
                     #np용 배열로 저장
                     room_vector = np.array([room_diff, room_acti])
                     user_vector = np.array([user_option['difficulty'], user_option['activity']])
+                    #np용 배열로 저장
+                    room_vector = np.array([room_diff, room_acti])
+                    user_vector = np.array([user_option['difficulty'], user_option['activity']])
 
                     #유클리드 거리 계산
                     euclidean_distance = np.linalg.norm(room_vector - user_vector)
@@ -372,6 +384,9 @@ class RoomViewSet(viewsets.ModelViewSet):
                     room_diff = room.difficulty
                     room_horr = room.fear
 
+                    #np용 배열로 저장
+                    room_vector = np.array([room_diff, room_horr])
+                    user_vector = np.array([user_option['difficulty'], user_option['fear']])
                     #np용 배열로 저장
                     room_vector = np.array([room_diff, room_horr])
                     user_vector = np.array([user_option['difficulty'], user_option['fear']])
@@ -392,6 +407,9 @@ class RoomViewSet(viewsets.ModelViewSet):
                     #np용 배열로 저장
                     room_vector = np.array([room_acti])
                     user_vector = np.array([user_option['activity']])
+                    #np용 배열로 저장
+                    room_vector = np.array([room_acti])
+                    user_vector = np.array([user_option['activity']])
 
                     #유클리드 거리 계산
                     euclidean_distance = np.linalg.norm(room_vector - user_vector)
@@ -407,6 +425,9 @@ class RoomViewSet(viewsets.ModelViewSet):
                     #np용 배열로 저장
                     room_vector = np.array([room_horr])
                     user_vector = np.array([user_option.horror])
+                    #np용 배열로 저장
+                    room_vector = np.array([room_horr])
+                    user_vector = np.array([user_option.horror])
 
                     #유클리드 거리 계산
                     euclidean_distance = np.linalg.norm(room_vector - user_vector)
@@ -419,6 +440,9 @@ class RoomViewSet(viewsets.ModelViewSet):
                 for room in filtered_rooms:
                     room_diff = room.difficulty
 
+                    #np용 배열로 저장
+                    room_vector = np.array([room_diff])
+                    user_vector = np.array([user_option['difficulty']])
                     #np용 배열로 저장
                     room_vector = np.array([room_diff])
                     user_vector = np.array([user_option['difficulty']])
@@ -451,7 +475,13 @@ class RoomViewSet(viewsets.ModelViewSet):
 
         # 방 ID별로 유사도 값들을 합산
             sum_similarity = genre_values + property_values
+        # 방 ID별로 유사도 값들을 합산
+            sum_similarity = genre_values + property_values
 
+        # 유사도 값들의 표준 편차 계산
+            total_similarity = np.concatenate((genre_values, property_values))
+            total_similarity = np.reshape(total_similarity, (2, len(room_IDs)))
+            total_similarity_std = total_similarity.std(axis=0)
         # 유사도 값들의 표준 편차 계산
             total_similarity = np.concatenate((genre_values, property_values))
             total_similarity = np.reshape(total_similarity, (2, len(room_IDs)))
