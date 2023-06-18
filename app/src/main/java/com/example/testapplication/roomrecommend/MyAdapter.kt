@@ -23,14 +23,13 @@ class MyAdapter(
     class MyViewHolder(
         private val binding: ActivityItemrecyclerciewBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-
         fun onBind(
             roomdata: getroomlistresponse.Data,
             addchatroom: (Int) -> Unit
         ) {
             binding.roomdata = roomdata
             binding.executePendingBindings()
-            binding.root.setOnClickListener {
+            binding.btnEnter.setOnClickListener {
                 addchatroom(roomdata.roomID)
             }
         }

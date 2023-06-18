@@ -58,14 +58,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:fontFamily="@font/pretendard"
-                    android:text="@string/UserName"
+                    android:text="이준희"
                     android:textColor="@color/text_main"
                     android:textSize="18sp"/>
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="\@userID"/>
+                    android:text="111"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -192,7 +192,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/pretendard"
             android:gravity="top"
-            android:text="@string/intro"
+            android:text="전과 6범의 이준희 입니다. 잘 부탁드려요~"
             android:textColor="@color/text_main"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"

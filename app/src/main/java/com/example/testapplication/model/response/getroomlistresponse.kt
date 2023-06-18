@@ -8,7 +8,7 @@ data class getroomlistresponse(
     @SerialName("data")
     val `data`: List<Data>,
     @SerialName("success")
-    val success: Boolean,
+    val success: Boolean
 ) {
     @Serializable
     data class Data(
