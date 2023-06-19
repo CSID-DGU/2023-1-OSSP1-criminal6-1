@@ -84,10 +84,42 @@ genre_similarity=[[1,0,0.6604,0,0,0,0,0.5007,0,0.7116],
 * 정량적 평가 결과
   * 테스트 케이스및 지니 계수 결과 엑셀 파일의 경우 깃허브에 업로드 되어 있음
 ![정량적 평가](https://github.com/ch8930/-/assets/101847731/11b9c633-c942-4392-84ec-a0259250e51e)
+
+### (2)프론트엔드 수정 및 개선 사항
+
+#### 수정사항 (매칭 알고리즘에 영향을 미치는 오류들을 고침)
+    - 캘린더 날짜 선택 오류
+    - 방찾기 진행 시 앱 비정상 종료      
+    - 활동성 선택 항목 부분 오류
+
+#### 개선사항 (사용자 친화적 UI/UX)
+
+|  기존 UI/UX  |   개선 UI/UX    | 추가 레이아웃 (매칭 실패시 화면) |
+| :-------------: | :----------: | :----------: |
+| <img width="189" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/17822491-1cda-4842-b53c-4ca966116abb"> | <img width="258" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/da86f3f6-d398-4993-b497-9e2b4f7071d6"> | <img width="116" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/b4b680bf-b110-44f6-b7e6-f0869196ed5f"> |
+
+#### 서버통신
+-api 명세서를 토대로 Retrofit2 라이브러리 사용하여 기능별로 서버통신 구현 (서버통신 pr 올려놓았습니다.)
+
 ***
 ## __5. 시연 영상__
 
+### 방찾기 및 채팅방 입장 시연영상
+https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/e0aa29ca-065c-40f8-96c0-b327372167ab
+
+### 방 생성 시연영상
+https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/a5e9cf97-d888-48c1-9794-c38a887132d5
+
+### 방 찾기 시 매칭될 방 없을때 시연영상
+https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/a53b7164-7aa7-4e48-82e4-70c388d3d7e8
+
+
+
 ***
+
+
+
+
 ## __6. 노션 링크__
 [Notion](https://cake-nerine-a2f.notion.site/8a6d4edc900d4ddeb7c345a1fa8f800b?pvs=4)
 ***
