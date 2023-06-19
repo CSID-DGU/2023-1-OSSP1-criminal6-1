@@ -122,7 +122,7 @@ genre_similarity=[[1,0,0.6604,0,0,0,0,0.5007,0,0.7116],
 | :-------------: | :----------: | :----------: |
 | ![image](https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/8f2a85a9-583d-46fc-8816-eb524758c782) <br/> <img width="332" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/ca043e04-62ed-49e4-a17d-a84d37a210ed"> |<img width="550" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/9c07c3cd-2ed0-4942-a68f-94750d339509"> | <img width="116" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/b4b680bf-b110-44f6-b7e6-f0869196ed5f"> |
 | **설명** | **설명** | **설명** |
-| AWS가 제공하는 ACM 서비스로 인증서 발급​<br/><br/> Application load balancer 생성 후 이를 routing하는 레코드 추가 생성 | 서버 주소를 local.properties에 두어​ 서버 주소가<br/> 노출되는 것 방지​ | 프론트엔드에 모두 저장되어 있던 추천 알고리즘을 ​백엔드에 저장해 유지보수 및 보안 강화​​|
+| AWS가 제공하는 ACM 서비스로 인증서 발급​<br/><br/> Application load balancer 생성 후 이를 routing하는 레코드 추가 생성 | 서버 주소를 local.properties에 두어​ 서버 주소가 노출되는 것 방지​ | 프론트엔드에 모두 저장되어 있던 추천 알고리즘을 ​백엔드에 저장해 유지보수 및 보안 강화​​|
 
 ***
 ## __5. 시연 영상__
