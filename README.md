@@ -85,7 +85,15 @@ genre_similarity=[[1,0,0.6604,0,0,0,0,0.5007,0,0.7116],
   * 테스트 케이스및 지니 계수 결과 엑셀 파일의 경우 깃허브에 업로드 되어 있음
 ![정량적 평가](https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/101847731/a8882ed2-6f8e-4a18-bb38-f114cf6146cb)
 
-### (2)프론트엔드 수정 및 개선 사항
+### (2)백엔드 수정 및 개선 사항 
+추천 알고리즘의 위치를 프론트에서 백엔드로 이동 
+    
+    * 빠른 프로세싱 속도로 데이터 처리와 성능을 향상
+    * 알고리즘 유지 보수성 개선
+    * 알고리즘의 유연성과 확장성을 높임
+
+
+### (3)프론트엔드 수정 및 개선 사항
 
 #### 수정사항 (매칭 알고리즘에 영향을 미치는 오류들을 고침)
     - 캘린더 날짜 선택 오류
@@ -97,6 +105,7 @@ genre_similarity=[[1,0,0.6604,0,0,0,0,0.5007,0,0.7116],
 |  기존 UI/UX  |   개선 UI/UX    | 추가 레이아웃 (매칭 실패시 화면) |
 | :-------------: | :----------: | :----------: |
 | <img width="189" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/17822491-1cda-4842-b53c-4ca966116abb"> | <img width="258" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/da86f3f6-d398-4993-b497-9e2b4f7071d6"> | <img width="116" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/113578158/b4b680bf-b110-44f6-b7e6-f0869196ed5f"> |
+    
 
 #### 서버통신
 -api 명세서를 토대로 Retrofit2 라이브러리 사용하여 기능별로 서버통신 구현 (서버통신 pr 올려놓았습니다.)
