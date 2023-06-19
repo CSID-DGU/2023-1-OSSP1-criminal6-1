@@ -89,6 +89,8 @@ genre_similarity=[[1,0,0.6604,0,0,0,0,0.5007,0,0.7116],
 추천 알고리즘의 위치를 프론트에서 백엔드로 이동 
     <img width="824" alt="image" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/111051264/b03372bf-8abe-423e-85c7-485a43d86c53">
 
+데이터베이스 ERDiagram
+    <img width="824" alt="데이터베이스 ERD" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/129152167/237ea868-e1c8-4255-99c1-1ae7f015a6e8">
     
     - 빠른 프로세싱 속도로 데이터 처리와 성능을 향상
     - 알고리즘 유지 보수성 개선
