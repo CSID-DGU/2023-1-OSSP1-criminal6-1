@@ -1,5 +1,6 @@
 # 2023-1-OPPS1-전과6범-01
-2023년 1학기 공개SW프로젝트01 1조 전과6범입니다. 
+2023년 1학기 공개SW프로젝트01 1조 전과6범입니다.
+
 # __About Team__
 ***
 |이름|학과|역할|
@@ -15,17 +16,19 @@
 <div>
 <h4> 기존의 방탈출 메이트 매칭 App 고도화 
 </div>
-
+    
+#### 선행프로젝트- __펀칭앱__ (https://github.com/CSID-DGU/2022-2-OSSP1-Exit-1.git)
 ## __2. 기술스택 & Workflow__
 ***
 <span><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></span>
 <span><img src="https://img.shields.io/badge/VisualStudioCode-007ACC?style=flat-square&logo=VisualStudioCode&logoColor=white"/></span>
 <span><img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/></span>
 <span><img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/></span>
-<img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white">
-<img width="20%" src="https://user-images.githubusercontent.com/87844641/173768618-f9e968a8-1be8-486e-9cf9-0482e664ef9a.png"/>
-<img width="20%" src="https://user-images.githubusercontent.com/87844641/173817432-ddb8a924-3e7e-4370-8ed7-79e019a4bf67.png"/>  
-<img width="20%" src="https://user-images.githubusercontent.com/89643634/208532397-c4c26abb-af11-44d9-9d66-fa40987feb6b.png"/> 
+<span><img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"></span>
+<span><img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white"></span><br/>
+<span><img width="20%" src="https://user-images.githubusercontent.com/87844641/173768618-f9e968a8-1be8-486e-9cf9-0482e664ef9a.png"/></span>
+<span><img width="20%" src="https://user-images.githubusercontent.com/87844641/173817432-ddb8a924-3e7e-4370-8ed7-79e019a4bf67.png"/></span> 
+<span><img width="20%" src="https://user-images.githubusercontent.com/89643634/208532397-c4c26abb-af11-44d9-9d66-fa40987feb6b.png"/></span> 
 ***
 ## __3. 개선사항__
 ***
