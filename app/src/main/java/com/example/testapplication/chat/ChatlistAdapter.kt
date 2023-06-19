@@ -7,29 +7,24 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testapplication.create_room.CreateTotalActivity
+import com.example.testapplication.databinding.ActivityCreateTotalBinding
 import com.example.testapplication.databinding.LayoutChatlistBinding
 import com.example.testapplication.getRoomListModel
+import com.example.testapplication.model.request.creatroomrequest
 
 class ChatlistAdapter(context : Context): RecyclerView.Adapter<ChatlistAdapter.ChatlistViewHolder>() {
 
     private val inflater by lazy { LayoutInflater.from(context)}
-    private var categorylist: List<getRoomListModel.roomData> = emptyList()
+    private var categorylist: List<CreateTotalActivity> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatlistViewHolder {
-        val binding = LayoutChatlistBinding.inflate(inflater, parent,false)
+        val binding = ActivityCreateTotalBinding.inflate(inflater, parent,false)
         return ChatlistViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ChatlistViewHolder, position: Int) {
         holder.bind(categorylist[position])
-
-        holder.itemView.setOnClickListener {
-            Log.d("클릭","클릭")
-            val intent = Intent(holder.itemView?.context, ChatActivity::class.java)
-            intent.putExtra("roomID",categorylist[position].roomID)
-            intent.putExtra("roomTitle",categorylist[position].title)
-            ContextCompat.startActivity(holder.itemView.context, intent,null)
-            }
     }
 
     override fun getItemCount(): Int {
@@ -37,16 +32,15 @@ class ChatlistAdapter(context : Context): RecyclerView.Adapter<ChatlistAdapter.C
     }
 
     class ChatlistViewHolder(
-        private val binding: LayoutChatlistBinding
+        private val binding: ActivityCreateTotalBinding
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: getRoomListModel.roomData) {
-            //binding.ivChatlistImg.setImageDrawable(binding.root.context.getDrawable(data.chatlist_img))
-            binding.tvChatlistTitle.setText(data.title)
+        fun bind(data: CreateTotalActivity) {
+            binding.tvRoomtitle.setText(data.title)
 
         }
     }
 
-    fun setRepoList(repoList: List<getRoomListModel.roomData>){
+    fun setRepoList(repoList: List<CreateTotalActivity>){
         this.categorylist = repoList.toList()
         notifyDataSetChanged()
     }

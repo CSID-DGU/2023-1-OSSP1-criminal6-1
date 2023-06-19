@@ -70,7 +70,7 @@ class CreateTotalActivity : AppCompatActivity() {
                     call: Call<createroomresponse>,
                     response: Response<createroomresponse>
                 ) {
-                    Log.d("userid", userid.toString())
+                    Log.d("aaa", response.body().toString())
                     if (response.isSuccessful) {
                         Toast.makeText(applicationContext, "방 생성이 완료되었습니다.", Toast.LENGTH_SHORT)
                             .show()
@@ -89,6 +89,7 @@ class CreateTotalActivity : AppCompatActivity() {
 
 
             })
+
         }
         binding.btnBack.setOnClickListener {
             val intent = Intent(this, CreateRoomOptionActivity::class.java)
