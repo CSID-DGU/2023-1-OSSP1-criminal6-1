@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "testarray">
+        <item>선택하세요</item>
+        <item>테스트1</item>
+        <item>테스트2</item>
+        <item>테스트3</item>
+        <item>테스트4</item>
+        <item>테스트5</item>
+        <item>테스트6</item>
+        <item>테스트7</item>
+        <item>테스트8</item>
+        <item>테스트9</item>
+        <item>테스트10</item>
+
+    </string-array>
+</resources>

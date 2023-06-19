@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="roomdata"
+            type="com.example.testapplication.model.response.getroomlistresponse.Data" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/items"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/stroke_bottom_gray">
+
+        <Button
+            android:id="@+id/btn_enter"
+            android:textColor="@color/text_white"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="입장하기"
+            android:backgroundTint="@color/blue0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <LinearLayout
+            android:id="@+id/roomlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/room_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/pretendard_bold"
+                android:paddingTop="10dp"
+                android:text="@{roomdata.title}"
+                android:textColor="@color/text_main"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/room_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/pretendard"
+                android:text="@{roomdata.roomIntro}"
+                android:textColor="@color/gray_dark"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/room_name" />
+
+            <TextView
+                android:id="@+id/room_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/pretendard"
+                android:text='@{ "지역 :  " + roomdata.region}'
+                android:textColor="@color/blue0"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@+id/room_description" />
+
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">TestApplication</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <!--기본-->
+    <string name="next">다음으로</string>
+    <string name="prev">이전으로</string>
+    <!--menu title-->
+    <string name="CreateRoom">방 만들기</string>
+    <string name="Matching">매칭</string>
+    <string name="MyPage">내 프로필</string>
+
+    <!--matching-->
+    <!--    intro-->
+    <string name="intro1">새로운 만남</string>
+    <string name="intro2">즐거운 매칭</string>
+    <string name="intro3">FUN한 탈출</string>
+    <string name="btn_search">찾아보기</string>
+    <string name="btn_create">방만들기</string>
+    <!--    option-->
+    <string name="scary">공포도</string>
+    <string name="difficulty">난이도</string>
+    <string name="activity">활동성</string>
+    <string name="thema">장르</string>
+    <string name="SelectOption_title">옵션 선택</string>
+    <!--    local-->
+    <string name="SelectLocal_title">지역 선택</string>
+    <string name="selectcity">지역1</string>
+    <!--    date-->
+    <string name="SelectDate_title">날짜 선택</string>
+    <!--chat-->
+    <string name="Chat">즐기는자가 일류다,,,</string>
+
+    <!--mypage-->
+    <string name="UserName">LeeJeongsu</string>
+    <!--    introduce-->
+    <string name="intro">안녕하세요. 저는 24살 대학생 이정수입니다. 만나서 반가워요 XD</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login2">LoginActivity2</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="roomIntroEX"> 때 이른 봄 몇 송이 꺾어다 너의 방 문 앞에 두었어. 긴 잠 실컷 자고 나오면 그때쯤엔 예쁘게 피어 있겠다. 별 띄운 여름 한 컵 따라다 너의 머리맡에 두었어. 금세 다 녹아버릴 텐데... 너는 아직 혼자 쉬고 싶은가 봐. </string>
+    <string name="nomatchingtext">매칭된 방이 없습니다</string>
+</resources>

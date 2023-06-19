@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_matching"
+        android:title="매칭"
+        android:icon="@drawable/ic_matching" />
+    <item android:id="@+id/nav_category"
+        android:title="카테고리"
+        android:icon="@drawable/ic_category" />
+    <item android:id="@+id/nav_chat"
+        android:title="채팅"
+        android:icon="@drawable/ic_chat" />
+    <item android:id="@+id/nav_mypage"
+        android:title="마이페이지"
+        android:icon="@drawable/ic_mypage" />
+</menu>

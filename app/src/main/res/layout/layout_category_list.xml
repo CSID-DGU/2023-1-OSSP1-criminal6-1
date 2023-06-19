@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_category"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:textAlignment="center"
+        tools:src="@drawable/qmark" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/title_category"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:textColor="@color/text_main"
+            android:textSize="18sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="퀘스천마트" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp">
+
+            <TextView
+                android:id="@+id/genre_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/pretendard"
+                android:textColor="@color/text_gray"
+                tools:text="장르: 기타" />
+
+            <TextView
+                android:id="@+id/diff_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/pretendard"
+                android:textColor="@color/text_gray"
+                tools:text="난이도: 어려워" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <ImageView
+                android:layout_width="15sp"
+                android:layout_height="15sp"
+                android:src="@drawable/ic_location"
+                android:layout_gravity="center"
+                app:tint="@color/text_gray" />
+            <TextView
+                android:id="@+id/area_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/pretendard"
+                android:textColor="@color/text_gray"
+                tools:text="서울특별시 마포구 와우산로(홍대)" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

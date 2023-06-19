@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_matching"
+        android:title="data1" />
+
+    <item android:title="bigdata">
+        <menu>
+            <item
+                android:id="@+id/nav_remote"
+                android:icon="@drawable/ic_calender"
+                android:title="data2"/>
+            <item
+                android:id="@+id/nav_addremote"
+                android:icon="@drawable/ic_category"
+                android:title="data3"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/nav_explain"
+        android:icon="@drawable/ic_chat"
+        android:title="data4" />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_mypage"
+        android:title="data5" />
+</menu>
