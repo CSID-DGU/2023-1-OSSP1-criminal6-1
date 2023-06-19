@@ -10,7 +10,7 @@
 |박서연|컴퓨터공학과|Backend|
 |박선유|컴퓨터공학과|Backend|
 |이준희|컴퓨터공학과|Frontend|https://github.com/l2zh|
-|최지현|컴퓨터공학과|Backend|
+|최지현|컴퓨터공학과|Backend|https://github.com/ch8930|
 
 ## __1. 프로젝트 주제__
 <div>
