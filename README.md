@@ -5,9 +5,9 @@
 ***
 |이름|학과|역할|개인 레포|
 |----|---|---|---|
-|이하늘|컴퓨터공학과|팀장|
-|김예나|컴퓨터공학과|Backend|
-|박서연|컴퓨터공학과|Backend|
+|이하늘|컴퓨터공학과|팀장|https://github.com/cie10|
+|김예나|컴퓨터공학과|Backend|https://github.com/rladpskoa|
+|박서연|컴퓨터공학과|Backend|https://github.com/LucaSeoyoun|
 |박선유|컴퓨터공학과|Backend|https://github.com/sunyu0216
 |이준희|컴퓨터공학과|Frontend|https://github.com/l2zh|
 |최지현|컴퓨터공학과|Backend|https://github.com/ch8930|
