@@ -1,0 +1,14 @@
+CREATE TABLE `Chat` (
+    `chatID`	INT(11)	    NULL,
+    `roomID`	INT(11)	    NULL,
+    `senderID`	VARCHAR(45)	NULL,
+    `content`	text	    NULL,
+    `createAT`	DATETIME	NULL,
+    `roomID2`	INT(11)	    NOT NULL
+);
+
+
+ALTER TABLE `Chat` ADD CONSTRAINT `PK_CHAT` PRIMARY KEY (`chatID`);
+
+ALTER TABLE `Chat` ADD CONSTRAINT `FK_Room_TO_Chat_1` FOREIGN KEY (`roomID2`)
+    REFERENCES `Room` (`roomID`);

@@ -1,0 +1,11 @@
+CREATE TABLE `Room` (
+    `roomID`	INT(11)	        NOT NULL,
+    `title`	    VARCHAR(45)	    NOT NULL,
+    `roomIntro`	VARCHAR(200)	NULL,
+    `user2`	    INT(11)	NOT     NULL
+);
+
+ALTER TABLE `Room` ADD CONSTRAINT `PK_ROOM` PRIMARY KEY (`roomID`);
+
+ALTER TABLE `Room` ADD CONSTRAINT `FK_User_TO_Room_1` FOREIGN KEY (`user2`)
+    REFERENCES `User` (`user`);
