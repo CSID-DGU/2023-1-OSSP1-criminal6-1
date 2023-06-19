@@ -89,5 +89,5 @@ genre_similarity=[[1,0,0.6604,0,0,0,0,0.5007,0,0.7116],
 
 ***
 ## __6. 노션 링크__
-[Notion](https://cake-nerine-a2f.notion.site/8a6d4edc900d4ddeb7c345a1f-- a8f800b?pvs=4)
+[Notion](https://cake-nerine-a2f.notion.site/8a6d4edc900d4ddeb7c345a1fa8f800b?pvs=4)
 ***
