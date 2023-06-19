@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,21 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31" >
-
-
+        tools:targetApi="31">
         <activity
-            android:name=".MatchingLocalActivity"
-            android:exported="false" >
+            android:name=".matching.MatchingFailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".matching.MatchingLocalActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:name=".MatchingDateActivity"
-            android:exported="true" >
-
+            android:name=".matching.MatchingDateActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,66 +39,64 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MatchingOptionActivity"
-            android:exported="false" >
+            android:name=".matching.MatchingOptionActivity"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MatchingTotalActivity"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-
-
-        <activity
-            android:name=".CreateRoomDateActivity"
-            android:exported="false" >
+            android:name=".matching.MatchingTotalActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateRoomNameActivity"
-            android:exported="false" >
+            android:name=".create_room.CreateRoomDateActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateTotalActivity"
-            android:exported="false" >
+            android:name=".create_room.CreateRoomNameActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ChatActivity"
-            android:exported="false" >
+            android:name=".create_room.CreateTotalActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateRoomOptionActivity"
-            android:exported="false" >
+            android:name=".chat.ChatActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".create_room.CreateRoomOptionActivity"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".IntroActivity"
-            android:exported="false" >
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Recommend_list"
-            android:exported="false" >
+            android:name=".roomrecommend.Recommend_list"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -106,20 +105,18 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateRoomLocalActivity"
-            android:exported="false" >
+            android:name=".create_room.CreateRoomLocalActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".sign.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="true" >
-
-        </activity>
+            android:name=".sign.LoginActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

@@ -1,14 +1,12 @@
 package com.example.testapplication
 
-import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
+import com.example.testapplication.chat.ChatFragment
 import com.example.testapplication.databinding.ActivityMainBinding
+import com.example.testapplication.matching.MatchingFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding1 = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding1.root)
+
+        val userid = intent.getStringExtra("userid")
 
         if (frame == null) {
             supportFragmentManager.beginTransaction()

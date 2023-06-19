@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/realwhite"
-    tools:context=".CreateTotalActivity">
+    tools:context=".create_room.CreateTotalActivity">
 
     <TextView
         android:id="@+id/tv_title"
@@ -92,25 +92,25 @@
                 android:textColor="@color/text_main"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tv_area2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:fontFamily="@font/pretendard"
-                android:text="건대"
-                android:textColor="@color/text_main"
-                android:textSize="20sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_area2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:fontFamily="@font/pretendard"-->
+<!--                android:text="건대"-->
+<!--                android:textColor="@color/text_main"-->
+<!--                android:textSize="20sp" />-->
 
-            <TextView
-                android:id="@+id/tv_area3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/pretendard"
-                android:text="홍대"
-                android:textColor="@color/text_main"
-                android:textSize="20sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_area3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:fontFamily="@font/pretendard"-->
+<!--                android:text="홍대"-->
+<!--                android:textColor="@color/text_main"-->
+<!--                android:textSize="20sp" />-->
         </LinearLayout>
 
         <LinearLayout
