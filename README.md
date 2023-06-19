@@ -35,7 +35,7 @@
 ### (1) 알고리즘의 고도화
 ### __새로운 알고리즘 다이어 그램__
 <p align="left">
-  <img width="407" alt="KakaoTalk_20230619_151026083" src="https://github.com/ch8930/datastructure-project/assets/101847731/26256904-daac-4e56-9ea0-3d2a6bad55a8">
+  <img width="407" alt="KakaoTalk_20230619_151026083" src="https://github.com/CSID-DGU/2023-1-OSSP1-criminal6-1/assets/101847731/f090ba66-3cd1-4874-a157-90641318a4e2">
 </p>
 
 ### 기존 프로젝트의 알고리즘 다이어그램을 최대한 유지하되 
